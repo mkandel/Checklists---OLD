@@ -1,6 +1,10 @@
-package hello;
+package hello.entities;
 
-import static hello.ErrorMessageEnums.INVALID_EMAIL;
+import hello.utils.EmailValidator;
+import hello.utils.InvalidEmailException;
+import hello.utils.UserTypeEnums;
+
+import static hello.utils.ErrorMessageEnums.INVALID_EMAIL;
 
 public class User {
     private String id;
@@ -8,6 +12,7 @@ public class User {
     private String lName;
     private String alias;
     private String email;
+    private UserTypeEnums type;
 
     public String getId() {
         return id;
@@ -51,5 +56,13 @@ public class User {
             throw new InvalidEmailException(INVALID_EMAIL);
         }
         this.email = email;
+    }
+
+    public UserTypeEnums getType() {
+        return type;
+    }
+
+    public void setType(UserTypeEnums type) {
+        this.type = type;
     }
 }

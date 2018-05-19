@@ -1,8 +1,13 @@
 package hello;
 
+import hello.entities.User;
+import hello.utils.ErrorMessageEnums;
+import hello.utils.InvalidEmailException;
 import hello.utils.RandomString;
 import org.junit.Test;
 
+import static hello.utils.UserTypeEnums.ADMIN;
+import static hello.utils.UserTypeEnums.USER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -61,5 +66,14 @@ public class UserUnitTest {
 
         }
         assertThat(email, equalTo(user.getEmail()));
+    }
+
+
+    @Test
+    public void getAndSetType() {
+        user.setType(ADMIN);
+        assertThat(ADMIN, equalTo(user.getType()));
+        user.setType(USER);
+        assertThat(USER, equalTo(user.getType()));
     }
 }
