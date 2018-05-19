@@ -1,24 +1,38 @@
+/*
+ * Copyright (c) 2018. Marc Kandel
+ */
+
 package hello.entities;
 
 import hello.utils.EmailValidator;
 import hello.utils.InvalidEmailException;
 import hello.utils.UserTypeEnums;
 
+import java.util.UUID;
+
 import static hello.utils.ErrorMessageEnums.INVALID_EMAIL;
 
 public class User {
-    private String id;
+    private UUID id;
     private String fName;
     private String lName;
     private String alias;
     private String email;
     private UserTypeEnums type;
+    private Boolean active;
 
-    public String getId() {
+    public User(UUID id) {
+        this.id = id;
+    }
+
+    public User() {
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -64,5 +78,13 @@ public class User {
 
     public void setType(UserTypeEnums type) {
         this.type = type;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

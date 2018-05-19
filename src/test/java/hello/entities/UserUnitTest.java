@@ -1,13 +1,17 @@
-package hello;
+/*
+ * Copyright (c) 2018. Marc Kandel
+ */
 
-import hello.entities.User;
+package hello.entities;
+
 import hello.utils.ErrorMessageEnums;
 import hello.utils.InvalidEmailException;
 import hello.utils.RandomString;
 import org.junit.Test;
 
-import static hello.utils.UserTypeEnums.ADMIN;
-import static hello.utils.UserTypeEnums.USER;
+import java.util.UUID;
+
+import static hello.utils.UserTypeEnums.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -20,9 +24,10 @@ public class UserUnitTest {
     @Test
     public void getAndSetId() {
         String id = generator.nextString();
+        UUID uuid = java.util.UUID.randomUUID();
         System.out.println("id: " + id);
-        user.setId(id);
-        assertThat(id, equalTo(user.getId()));
+        user.setId(uuid);
+        assertThat(uuid, equalTo(user.getId()));
     }
 
     @Test
@@ -75,5 +80,7 @@ public class UserUnitTest {
         assertThat(ADMIN, equalTo(user.getType()));
         user.setType(USER);
         assertThat(USER, equalTo(user.getType()));
+        user.setType(CREATOR);
+        assertThat(CREATOR, equalTo(user.getType()));
     }
 }
