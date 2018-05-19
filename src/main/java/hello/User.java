@@ -1,5 +1,7 @@
 package hello;
 
+import static hello.ErrorMessageEnums.INVALID_EMAIL;
+
 public class User {
     private String id;
     private String fName;
@@ -46,7 +48,7 @@ public class User {
     public void setEmail(String email) throws InvalidEmailException {
         EmailValidator emailValidator = new EmailValidator();
         if (!emailValidator.validateEmail(email)){
-            throw new InvalidEmailException(ErrorMessageEnums.INVALID_EMAIL);
+            throw new InvalidEmailException(INVALID_EMAIL);
         }
         this.email = email;
     }
