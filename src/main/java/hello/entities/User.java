@@ -16,7 +16,7 @@ public class User {
     private UUID id;
     private String fName;
     private String lName;
-    private String alias;
+    private String username;
     private String email;
     private UserTypeEnums type;
     private Boolean active;
@@ -26,6 +26,7 @@ public class User {
     }
 
     public User() {
+        this.id = java.util.UUID.randomUUID();
     }
 
     public UUID getId() {
@@ -52,12 +53,12 @@ public class User {
         this.lName = lName;
     }
 
-    public String getAlias() {
-        return alias;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

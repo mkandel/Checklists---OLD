@@ -48,7 +48,7 @@ public class UserController {
         User user = new User();
         user.setfName(fName);
         user.setlName(lName);
-        user.setAlias(alias);
+        user.setUsername(alias);
         user.setEmail(email);
         user.setType(type);
         user.setActive(true);

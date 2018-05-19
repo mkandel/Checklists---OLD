@@ -23,9 +23,8 @@ public class UserUnitTest {
 
     @Test
     public void getAndSetId() {
-        String id = generator.nextString();
         UUID uuid = java.util.UUID.randomUUID();
-        System.out.println("id: " + id);
+        System.out.println("uuid: " + uuid);
         user.setId(uuid);
         assertThat(uuid, equalTo(user.getId()));
     }
@@ -47,11 +46,11 @@ public class UserUnitTest {
     }
 
     @Test
-    public void getAndSetAlias() {
-        String alias = generator.nextString();
-        System.out.println("alias: " + alias);
-        user.setAlias(alias);
-        assertThat(alias, equalTo(user.getAlias()));
+    public void getAndSetUsername() {
+        String username = generator.nextString();
+        System.out.println("username: " + username);
+        user.setUsername(username);
+        assertThat(username, equalTo(user.getUsername()));
     }
 
     @Test
