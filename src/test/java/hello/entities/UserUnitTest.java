@@ -72,7 +72,6 @@ public class UserUnitTest {
         assertThat(email, equalTo(user.getEmail()));
     }
 
-
     @Test
     public void getAndSetType() {
         user.setType(ADMIN);
@@ -81,5 +80,10 @@ public class UserUnitTest {
         assertThat(USER, equalTo(user.getType()));
         user.setType(CREATOR);
         assertThat(CREATOR, equalTo(user.getType()));
+    }
+
+    @Test
+    public void save() throws Exception {
+        user.save();
     }
 }
