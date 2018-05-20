@@ -33,6 +33,7 @@ public class UserController {
     public User user(@PathVariable String username) throws Exception {
         DbAdapter dbAdapter = new DbAdapter();
         User user = dbAdapter.getUser(username);
+//        User user = dbAdapter.getUser(username);
         return user;
     }
 

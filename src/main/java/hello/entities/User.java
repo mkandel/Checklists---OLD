@@ -23,11 +23,11 @@ public class User {
     private Boolean active;
 
     public User() {
-        this.id = java.util.UUID.randomUUID();
+//        this.id = java.util.UUID.randomUUID();
     }
 
     public User(String username) {
-        this.id = java.util.UUID.randomUUID();
+//        this.id = java.util.UUID.randomUUID();
         this.username = username;
     }
 

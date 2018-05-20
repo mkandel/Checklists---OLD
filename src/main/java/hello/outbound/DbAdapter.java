@@ -8,6 +8,8 @@ import hello.entities.User;
 
 import java.sql.*;
 
+import static hello.utils.UserTypesEnum.*;
+
 //@Bean
 public class DbAdapter {
     private String dbUsername = "sa";
@@ -77,7 +79,6 @@ public class DbAdapter {
             throw ex;
         }
 
-
 //        // Statements allow to issue SQL queries to the database
 //        statement = connect.createStatement();
 //        // Result set get the result of the SQL query
@@ -105,15 +106,24 @@ public class DbAdapter {
 
             while(rs.next()){
                 //Retrieve by column name
-                user.setfName(rs.getNString("lName"));
-                user.setlName(rs.getNString("lName"));
-                user.setUsername(rs.getNString("username"));
+                user.setfName(rs.getString("FName"));
+                user.setlName(rs.getString("lName"));
+                user.setUsername(rs.getString("username"));
                 user.setActive(rs.getBoolean("active"));
-                user.setEmail(rs.getNString("email"));
-//                int id  = rs.getInt("id");
-//                int age = rs.getInt("age");
-//                String first = rs.getString("first");
-//                String last = rs.getString("last");
+                user.setEmail(rs.getString("email"));
+
+                int type = rs.getInt("type");
+                if (type == 0) {
+                    user.setType(ADMIN);
+                } else if (type == 1) {
+                    user.setType(CREATOR);
+                } else {
+                    user.setType(USER);
+                }
+
+                // TODO: Figure out UUID ...
+                String uuidString = rs.getString("id");
+                user.setId(java.util.UUID.fromString(uuidString));
             }
             rs.close();
         } catch (SQLException ex) {
