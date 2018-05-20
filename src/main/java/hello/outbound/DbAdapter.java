@@ -37,21 +37,22 @@ public class DbAdapter {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connect = DriverManager.getConnection("jdbc:mysql://localhost/checklists"
-//                    connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/checklists"
-                    + "?autoReconnect=true&useSSL=false&"
-                    + "user=" + dbUsername + "&password=" + dbPassword);
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/checklists"
+                    + "?user=" + dbUsername + "&password=" + dbPassword
+                    + "&autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false"
+                    + "&useUnicode=true&useJDBCCompliantTimezoneShift=true"
+                    + "&serverTimezone=America/New_York"
+            );
         } catch (SQLException ex) {
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
+//            System.out.println("SQLException: " + ex.getMessage());
+//            System.out.println("SQLState: " + ex.getSQLState());
+//            System.out.println("VendorError: " + ex.getErrorCode());
             throw ex;
         } catch (Exception ex) {
             throw ex;
-//        } finally {
-//             connect.close();
+        } finally {
+             connect.close();
         }
-        connect.close();
 
 //        // Statements allow to issue SQL queries to the database
 //        statement = connect.createStatement();
