@@ -4,7 +4,7 @@
 
 package hello.utils;
 
-public enum UserTypeEnums {
+public enum UserTypesEnum {
     ADMIN,
     USER,
     CREATOR

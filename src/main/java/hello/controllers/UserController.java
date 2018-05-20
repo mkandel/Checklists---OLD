@@ -5,14 +5,13 @@
 package hello.controllers;
 
 import hello.entities.User;
+import hello.outbound.DbAdapter;
 import hello.utils.InvalidEmailException;
-import hello.utils.UserTypeEnums;
+import hello.utils.UserTypesEnum;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 import static hello.utils.Routes.*;
 
@@ -31,10 +30,9 @@ public class UserController {
     }
 
     @GetMapping(USER)
-    public User user(@PathVariable UUID id){
-        //public User user(@RequestParam(value="id") String id){
-//        UUID uuid = java.util.UUID.randomUUID();
-        User user = new User(id);
+    public User user(@PathVariable String username) throws Exception {
+        DbAdapter dbAdapter = new DbAdapter();
+        User user = dbAdapter.getUser(username);
         return user;
     }
 
@@ -43,7 +41,7 @@ public class UserController {
                         @PathVariable String lName,
                         @PathVariable String alias,
                         @PathVariable String email,
-                        @PathVariable UserTypeEnums type
+                        @PathVariable UserTypesEnum type
     ) throws InvalidEmailException {
         User user = new User();
         user.setfName(fName);

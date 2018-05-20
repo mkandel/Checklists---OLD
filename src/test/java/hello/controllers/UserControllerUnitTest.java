@@ -8,8 +8,6 @@ import hello.entities.User;
 import hello.utils.RandomString;
 import org.junit.Test;
 
-import java.util.UUID;
-
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
@@ -27,10 +25,10 @@ public class UserControllerUnitTest {
     }
 
     @Test
-    public void testUserEndpoint() {
-        UUID id = java.util.UUID.randomUUID();
-        User actual = userController.user(id);
-        // Assert that the stub returns the right userId
-        assertThat(id, equalTo(actual.getId()));
+    public void testUserEndpoint() throws Exception {
+        String username = "admin";
+        User actual = userController.user(username);
+
+        assertThat(username, equalTo(actual.getUsername()));
     }
 }

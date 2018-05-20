@@ -7,7 +7,7 @@ package hello.entities;
 import hello.outbound.DbAdapter;
 import hello.utils.EmailValidator;
 import hello.utils.InvalidEmailException;
-import hello.utils.UserTypeEnums;
+import hello.utils.UserTypesEnum;
 
 import java.util.UUID;
 
@@ -19,15 +19,16 @@ public class User {
     private String lName;
     private String username;
     private String email;
-    private UserTypeEnums type;
+    private UserTypesEnum type;
     private Boolean active;
-
-    public User(UUID id) {
-        this.id = id;
-    }
 
     public User() {
         this.id = java.util.UUID.randomUUID();
+    }
+
+    public User(String username) {
+        this.id = java.util.UUID.randomUUID();
+        this.username = username;
     }
 
     public UUID getId() {
@@ -74,11 +75,11 @@ public class User {
         this.email = email;
     }
 
-    public UserTypeEnums getType() {
+    public UserTypesEnum getType() {
         return type;
     }
 
-    public void setType(UserTypeEnums type) {
+    public void setType(UserTypesEnum type) {
         this.type = type;
     }
 
