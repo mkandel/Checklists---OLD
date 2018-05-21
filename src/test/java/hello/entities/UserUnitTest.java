@@ -4,6 +4,7 @@
 
 package hello.entities;
 
+import hello.BaseUnitTest;
 import hello.utils.ErrorMessageEnums;
 import hello.utils.InvalidEmailException;
 import hello.utils.RandomString;
@@ -16,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class UserUnitTest {
+public class UserUnitTest extends BaseUnitTest {
 
     private User user = new User();
     RandomString generator = new RandomString();

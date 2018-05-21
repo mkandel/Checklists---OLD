@@ -12,5 +12,4 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Category(UnitTest.class)
 @RunWith(SpringRunner.class)
 public abstract class BaseUnitTest {
-
 }

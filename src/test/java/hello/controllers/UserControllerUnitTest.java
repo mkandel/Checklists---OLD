@@ -4,6 +4,7 @@
 
 package hello.controllers;
 
+import hello.BaseUnitTest;
 import hello.entities.User;
 import hello.utils.RandomString;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
-public class UserControllerUnitTest {
+public class UserControllerUnitTest extends BaseUnitTest {
 
     private UserController userController = new UserController();
     RandomString generator = new RandomString();
