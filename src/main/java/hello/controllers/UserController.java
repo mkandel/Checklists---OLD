@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static hello.utils.Routes.*;
+import static hello.utils.Routes.ADD_USER;
+import static hello.utils.Routes.USER;
+import static hello.utils.Routes.USERS;
 
 @RestController
 public class UserController {
@@ -26,6 +28,10 @@ public class UserController {
      */
     @GetMapping(USERS)
     public User[] users(){
+        // Return list of usernames?
+        //List<String> list = people.stream()
+        //.map(Person::getName)
+        //.collect(Collectors.toList());
         return new User[0];
     }
 
