@@ -7,3 +7,5 @@ nb-gradle
 .idea/modules/elm.iml
 .idea/modules.xml
 out
+target
+.DS_Store
