@@ -38,8 +38,6 @@ public class DbAdapter {
             throw ex;
         } catch (Exception ex) {
             throw ex;
-//        } finally {
-//            connect.close();
         }
     }
 

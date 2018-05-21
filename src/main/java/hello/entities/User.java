@@ -4,7 +4,6 @@
 
 package hello.entities;
 
-import hello.outbound.DbAdapter;
 import hello.utils.EmailValidator;
 import hello.utils.InvalidEmailException;
 import hello.utils.UserTypesEnum;
@@ -92,7 +91,7 @@ public class User {
     }
 
     public void save() throws Exception {
-        DbAdapter dbAdapter = new DbAdapter();
-        dbAdapter.saveUser(this);
+//        DbAdapter dbAdapter = new DbAdapter();
+//        dbAdapter.saveUser(this);
     }
 }

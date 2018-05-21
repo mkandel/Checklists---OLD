@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static hello.utils.Routes.ADD_USER;
-import static hello.utils.Routes.USER;
-import static hello.utils.Routes.USERS;
+import static hello.utils.Routes.*;
 
 @RestController
 public class UserController {
@@ -39,7 +37,6 @@ public class UserController {
     public User user(@PathVariable String username) throws Exception {
         DbAdapter dbAdapter = new DbAdapter();
         User user = dbAdapter.getUser(username);
-//        User user = dbAdapter.getUser(username);
         return user;
     }
 
@@ -59,8 +56,4 @@ public class UserController {
         user.setActive(true);
         return user;
     }
-//    public Greeting greeting(@RequestParam(value="name", defaultValue="World!!!") String name) {
-//        return new Greeting(counter.incrementAndGet(),
-//                            String.format(template, name));
-//    }
 }
