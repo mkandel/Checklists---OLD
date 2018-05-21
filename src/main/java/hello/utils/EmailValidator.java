@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018. Marc Kandel
+ */
+
 package hello.utils;
 
 import java.util.regex.Matcher;
