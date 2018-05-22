@@ -22,11 +22,9 @@ public class User {
     private Boolean active;
 
     public User() {
-//        this.id = java.util.UUID.randomUUID();
     }
 
     public User(String username) {
-//        this.id = java.util.UUID.randomUUID();
         this.username = username;
     }
 
@@ -91,10 +89,8 @@ public class User {
     }
 
     public void save() throws Exception {
-//        DbAdapter dbAdapter = new DbAdapter();
-//        dbAdapter.saveUser(this);
         // save User to DB
-
+//        dbAdapter.saveUser(this);
         // read back user from DB and replace all values with the ones read back
         //      especially, set this.id for new User
     }

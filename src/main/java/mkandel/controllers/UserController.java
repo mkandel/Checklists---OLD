@@ -19,6 +19,16 @@ import static mkandel.utils.Routes.*;
 
 @RestController
 public class UserController {
+    DbAdapter dbAdapter;
+
+    public UserController() {
+        try {
+            this.dbAdapter = new DbAdapter();
+        } catch (Exception ex) {
+            // TODO: do something better with this exception ...
+//            throw ex;
+        }
+    }
 
     /**
      *  /api/v1/users endpoint:
@@ -28,14 +38,12 @@ public class UserController {
      */
     @GetMapping(USERS)
     public List<User> users() throws Exception {
-        DbAdapter dbAdapter = new DbAdapter();
         List<User> users = dbAdapter.getUsers();
         return users;
     }
 
     @GetMapping(USER)
     public User user(@PathVariable String username) throws Exception {
-        DbAdapter dbAdapter = new DbAdapter();
         User user = dbAdapter.getUser(username);
         return user;
     }

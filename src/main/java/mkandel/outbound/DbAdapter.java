@@ -6,6 +6,7 @@ package mkandel.outbound;
 
 import mkandel.entities.User;
 import mkandel.utils.InvalidEmailException;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,12 +14,12 @@ import java.util.List;
 
 import static mkandel.utils.UserTypes.*;
 
-//@Bean
+@Component
 public class DbAdapter {
     private String dbUsername = "sa";
     private String dbPassword = "sa";
 
-    private Connection connect = null;
+    private Connection connection;
     private Statement statement = null;
 //    private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
@@ -28,7 +29,7 @@ public class DbAdapter {
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/checklists"
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/checklists"
                     + "?user=" + dbUsername + "&password=" + dbPassword
                     + "&autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false"
                     + "&useUnicode=true&useJDBCCompliantTimezoneShift=true"
@@ -46,20 +47,20 @@ public class DbAdapter {
 
     public void destroy() throws Exception {
         try {
-            if (connect != null) {
-                connect.close();
+            if (connection != null) {
+                connection.close();
             }
         } catch (SQLException ex) {
             throw ex;
         } catch (Exception ex) {
             throw ex;
         } finally {
-            connect = null;
+            connection = null;
         }
     }
 
-    public void setConnect(Connection connect) {
-        this.connect = connect;
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
 
     public void setDbPassword(String dbPassword) {
@@ -70,26 +71,14 @@ public class DbAdapter {
         this.dbUsername = dbUsername;
     }
 
-//    public void saveUser(User user) {
     public void saveUser(User user) throws Exception {
         try {
-            statement = connect.createStatement();
+            statement = connection.createStatement();
         } catch (SQLException ex){
             throw ex;
         } catch (Exception ex) {
             throw ex;
         }
-
-//        // Statements allow to issue SQL queries to the database
-//        statement = connect.createStatement();
-//        // Result set get the result of the SQL query
-//        resultSet = statement
-//                .executeQuery("select * from feedback.comments");
-//        writeResultSet(resultSet);
-//
-//        // PreparedStatements can use variables and are more efficient
-//        preparedStatement = connect
-//                .prepareStatement("insert into  feedback.comments values (default, ?, ?, ?, ? , ?, ?)");
     }
 
     public User getUser(String username) throws Exception {
@@ -98,16 +87,16 @@ public class DbAdapter {
 
         try {
 //            String sql = "SELECT * FROM Users WHERE username LIKE ?";
-//            PreparedStatement statement = connect.prepareStatement(sql);
+//            PreparedStatement statement = connection.prepareStatement(sql);
 //            statement.setString(1, username);
-            statement = connect.createStatement();
+            statement = connection.createStatement();
             String sql = "SELECT * FROM Users WHERE username LIKE '" + username + "'";
 
             ResultSet rs = statement.executeQuery(sql);
 
             while(rs.next()){
                 //Retrieve by column name
-                processUser(user, rs);
+                processReadUser(user, rs);
             }
             rs.close();
         } catch (SQLException ex) {
@@ -122,7 +111,7 @@ public class DbAdapter {
     public List<User> getUsers() throws Exception {
         List<User> users = new ArrayList<>();
         try {
-            statement = connect.createStatement();
+            statement = connection.createStatement();
             String sql = "SELECT * FROM Users";
 
             ResultSet rs = statement.executeQuery(sql);
@@ -130,7 +119,7 @@ public class DbAdapter {
             while(rs.next()){
                 User user = new User();
                 //Retrieve by column name
-                processUser(user, rs);
+                processReadUser(user, rs);
                 users.add(user);
             }
             rs.close();
@@ -142,7 +131,7 @@ public class DbAdapter {
         return users;
     }
 
-    private void processUser(User user, ResultSet rs) throws SQLException, InvalidEmailException {
+    private void processReadUser(User user, ResultSet rs) throws SQLException, InvalidEmailException {
         user.setfName(rs.getString("FName"));
         user.setlName(rs.getString("lName"));
         user.setUsername(rs.getString("username"));

@@ -23,10 +23,9 @@ public class UserControllerUnitTest extends BaseUnitTest {
     public void testUsersEndpoint() throws Exception {
         List<User> actual = userController.users();
         assert actual.size() == 2;
-        // Assert that the stub returns an empty array
-//        assertArrayEquals(new User[0], actual);
     }
 
+    // I know this is not really a good test
     @Test
     public void testUserEndpoint() throws Exception {
         String username = "admin";

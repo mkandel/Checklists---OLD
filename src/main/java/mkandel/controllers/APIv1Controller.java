@@ -4,14 +4,17 @@
 
 package mkandel.controllers;
 
+import mkandel.utils.EmailValidator;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static mkandel.utils.Routes.BASE;
-import static mkandel.utils.Routes.HEALTH;
+import static mkandel.utils.Routes.*;
 
 @RestController
 public class APIv1Controller {
@@ -28,9 +31,29 @@ public class APIv1Controller {
     }
 
     @RequestMapping(HEALTH)
-    public Map<String, String> health(){
-        Map map = new HashMap<String, String>();
-        map.put("status", "OK");
-        return map;
+    public HashMap<String, String> health(){
+        HashMap ret = new HashMap<String, String>();
+        ret.put("status", "ok");
+        return ret;
+    }
+
+    @RequestMapping(TEAPOT)
+    public HttpStatus teapot(){
+        return HttpStatus.I_AM_A_TEAPOT;
+    }
+
+    @GetMapping(VALIDADTE_EMAIL)
+    public Map<String, String> validateEmail(@PathVariable String email){
+        EmailValidator emailValidator = new EmailValidator();
+        Map<String, String> ret = new HashMap<String, String>();
+        ret.put("email", email);
+        if (emailValidator.validateEmail(email)){
+            System.out.println("* Email validated: " + email);
+            ret.put("status", "ok");
+        } else {
+            System.out.println("* Email NOT validated: " + email);
+            ret.put("status", "invalid");
+        }
+        return ret;
     }
 }
