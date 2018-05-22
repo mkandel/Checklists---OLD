@@ -10,5 +10,6 @@ public class Routes {
 
     public static final String USERS = BASE + "/users";
     public static final String USER = BASE + "/user/{username}";
-    public static final String ADD_USER = BASE + "/user/add/{fName}/{lName}/{alias}/{email}/{type}";
+
+    public static final String ADD_USER = BASE + "/user/{username}/{fName}/{lName}/{email}/{type}";
 }
