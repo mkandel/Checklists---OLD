@@ -45,7 +45,7 @@ public class APIv1Controller {
     @GetMapping(VALIDADTE_EMAIL)
     public Map<String, String> validateEmail(@PathVariable String email){
         EmailValidator emailValidator = new EmailValidator();
-        Map<String, String> ret = new HashMap<String, String>();
+        Map<String, String> ret = new HashMap<>();
         ret.put("email", email);
         if (emailValidator.validateEmail(email)){
             System.out.println("* Email validated: " + email);
@@ -54,6 +54,12 @@ public class APIv1Controller {
             System.out.println("* Email NOT validated: " + email);
             ret.put("status", "invalid");
         }
+        return ret;
+    }
+
+    @GetMapping(USER_TYPES)
+    public Map<String, String> listTypes(){
+        Map<String, String> ret = new HashMap<>();
         return ret;
     }
 }
