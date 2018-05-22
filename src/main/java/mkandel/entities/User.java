@@ -93,5 +93,9 @@ public class User {
     public void save() throws Exception {
 //        DbAdapter dbAdapter = new DbAdapter();
 //        dbAdapter.saveUser(this);
+        // save User to DB
+
+        // read back user from DB and replace all values with the ones read back
+        //      especially, set this.id for new User
     }
 }

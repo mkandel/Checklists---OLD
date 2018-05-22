@@ -43,17 +43,28 @@ public class UserController {
     @PutMapping(ADD_USER)
     public User addUser(@PathVariable String fName,
                         @PathVariable String lName,
-                        @PathVariable String alias,
+                        @PathVariable String username,
                         @PathVariable String email,
-                        @PathVariable UserTypes type
+                        @PathVariable String type
     ) throws InvalidEmailException {
         User user = new User();
         user.setfName(fName);
         user.setlName(lName);
-        user.setUsername(alias);
+        user.setUsername(username);
         user.setEmail(email);
-        user.setType(type);
+        int intType = Integer.parseInt(type);
+        UserTypes actualType;
+        if(intType == 0){
+            actualType = UserTypes.ADMIN;
+        } else if (intType == 1){
+            actualType = UserTypes.CREATOR;
+        } else {
+            actualType = UserTypes.USER;
+        }
+        user.setType(actualType);
         user.setActive(true);
+        // TODO: save() user which should update id with DB assigned id
+        user.setId(java.util.UUID.randomUUID());
         return user;
     }
 }
