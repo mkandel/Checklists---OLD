@@ -2,17 +2,17 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.entities;
+package mkandel.entities;
 
-import hello.BaseUnitTest;
-import hello.utils.ErrorMessageEnums;
-import hello.utils.InvalidEmailException;
-import hello.utils.RandomString;
+import mkandel.BaseUnitTest;
+import mkandel.utils.ErrorMessageEnums;
+import mkandel.utils.InvalidEmailException;
+import mkandel.utils.RandomString;
 import org.junit.Test;
 
 import java.util.UUID;
 
-import static hello.utils.UserTypesEnum.*;
+import static mkandel.utils.UserTypesEnum.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;

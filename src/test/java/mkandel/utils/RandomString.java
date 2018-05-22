@@ -1,4 +1,8 @@
-package hello.utils;
+/*
+ * Copyright (c) 2018. Marc Kandel
+ */
+
+package mkandel.utils;
 import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.Objects;

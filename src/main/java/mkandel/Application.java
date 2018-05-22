@@ -1,4 +1,8 @@
-package hello;
+/*
+ * Copyright (c) 2018. Marc Kandel
+ */
+
+package mkandel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

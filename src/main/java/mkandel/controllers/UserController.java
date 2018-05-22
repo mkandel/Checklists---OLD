@@ -2,18 +2,20 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.controllers;
+package mkandel.controllers;
 
-import hello.entities.User;
-import hello.outbound.DbAdapter;
-import hello.utils.InvalidEmailException;
-import hello.utils.UserTypesEnum;
+import mkandel.entities.User;
+import mkandel.outbound.DbAdapter;
+import mkandel.utils.InvalidEmailException;
+import mkandel.utils.UserTypesEnum;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static hello.utils.Routes.*;
+import java.util.List;
+
+import static mkandel.utils.Routes.*;
 
 @RestController
 public class UserController {
@@ -25,12 +27,10 @@ public class UserController {
      * @TODO: Permissions, restrict users to only see what they have access to
      */
     @GetMapping(USERS)
-    public User[] users(){
-        // Return list of usernames?
-        //List<String> list = people.stream()
-        //.map(Person::getName)
-        //.collect(Collectors.toList());
-        return new User[0];
+    public List<User> users() throws Exception {
+        DbAdapter dbAdapter = new DbAdapter();
+        List<User> users = dbAdapter.getUsers();
+        return users;
     }
 
     @GetMapping(USER)

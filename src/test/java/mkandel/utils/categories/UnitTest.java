@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.utils.categories;
+package mkandel.utils.categories;
 
 public interface UnitTest {
 }

@@ -2,15 +2,16 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.controllers;
+package mkandel.controllers;
 
-import hello.BaseUnitTest;
-import hello.entities.User;
-import hello.utils.RandomString;
+import mkandel.BaseUnitTest;
+import mkandel.entities.User;
+import mkandel.utils.RandomString;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
 public class UserControllerUnitTest extends BaseUnitTest {
@@ -19,10 +20,11 @@ public class UserControllerUnitTest extends BaseUnitTest {
     RandomString generator = new RandomString();
 
     @Test
-    public void testUsersEndpoint() {
-        User[] actual = userController.users();
+    public void testUsersEndpoint() throws Exception {
+        List<User> actual = userController.users();
+        assert actual.size() == 2;
         // Assert that the stub returns an empty array
-        assertArrayEquals(new User[0], actual);
+//        assertArrayEquals(new User[0], actual);
     }
 
     @Test

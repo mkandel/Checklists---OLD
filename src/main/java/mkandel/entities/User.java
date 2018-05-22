@@ -2,15 +2,15 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.entities;
+package mkandel.entities;
 
-import hello.utils.EmailValidator;
-import hello.utils.InvalidEmailException;
-import hello.utils.UserTypesEnum;
+import mkandel.utils.EmailValidator;
+import mkandel.utils.InvalidEmailException;
+import mkandel.utils.UserTypesEnum;
 
 import java.util.UUID;
 
-import static hello.utils.ErrorMessageEnums.INVALID_EMAIL;
+import static mkandel.utils.ErrorMessageEnums.INVALID_EMAIL;
 
 public class User {
     private UUID id;

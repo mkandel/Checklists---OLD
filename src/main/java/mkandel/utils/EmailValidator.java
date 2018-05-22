@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.utils;
+package mkandel.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

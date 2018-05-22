@@ -2,12 +2,12 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.controllers;
+package mkandel.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static hello.utils.Routes.BASE;
+import static mkandel.utils.Routes.BASE;
 
 @RestController
 public class APIv1Controller {
@@ -22,9 +22,4 @@ public class APIv1Controller {
     public String apiRoot(){
         return "Welcome to the API version 1!";
     }
-
-//    public Greeting greeting(@RequestParam(value="name", defaultValue="World!!!") String name) {
-//        return new Greeting(counter.incrementAndGet(),
-//                            String.format(template, name));
-//    }
 }

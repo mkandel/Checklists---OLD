@@ -2,13 +2,16 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package hello.outbound;
+package mkandel.outbound;
 
-import hello.entities.User;
+import mkandel.entities.User;
+import mkandel.utils.InvalidEmailException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import static hello.utils.UserTypesEnum.*;
+import static mkandel.utils.UserTypesEnum.*;
 
 //@Bean
 public class DbAdapter {
@@ -104,24 +107,7 @@ public class DbAdapter {
 
             while(rs.next()){
                 //Retrieve by column name
-                user.setfName(rs.getString("FName"));
-                user.setlName(rs.getString("lName"));
-                user.setUsername(rs.getString("username"));
-                user.setActive(rs.getBoolean("active"));
-                user.setEmail(rs.getString("email"));
-
-                int type = rs.getInt("type");
-                if (type == 0) {
-                    user.setType(ADMIN);
-                } else if (type == 1) {
-                    user.setType(CREATOR);
-                } else {
-                    user.setType(USER);
-                }
-
-                // TODO: Figure out UUID ...
-                String uuidString = rs.getString("id");
-                user.setId(java.util.UUID.fromString(uuidString));
+                processUser(user, rs);
             }
             rs.close();
         } catch (SQLException ex) {
@@ -133,14 +119,46 @@ public class DbAdapter {
         return user;
     }
 
-    public User[] getUsers() throws Exception {
+    public List<User> getUsers() throws Exception {
+        List<User> users = new ArrayList<>();
         try {
             statement = connect.createStatement();
+            String sql = "SELECT * FROM Users";
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while(rs.next()){
+                User user = new User();
+                //Retrieve by column name
+                processUser(user, rs);
+                users.add(user);
+            }
+            rs.close();
         } catch (SQLException ex) {
             throw ex;
         } catch (Exception ex) {
             throw ex;
         }
-        return new User[0];
+        return users;
+    }
+
+    private void processUser(User user, ResultSet rs) throws SQLException, InvalidEmailException {
+        user.setfName(rs.getString("FName"));
+        user.setlName(rs.getString("lName"));
+        user.setUsername(rs.getString("username"));
+        user.setActive(rs.getBoolean("active"));
+        user.setEmail(rs.getString("email"));
+
+        int type = rs.getInt("type");
+        if (type == 0) {
+            user.setType(ADMIN);
+        } else if (type == 1) {
+            user.setType(CREATOR);
+        } else {
+            user.setType(USER);
+        }
+
+        String uuidString = rs.getString("id");
+        user.setId(java.util.UUID.fromString(uuidString));
     }
 }
