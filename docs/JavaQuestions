@@ -1,0 +1,10 @@
+* Should the object (e.g. User) implement save() or should the DB adapter have a
+        `save(User)` method and have user's save be `DbAdapter.save(this)`?
+
+* REST: Do I return JSON messages back on errors or HTTP status codes?
+    * How to differentiate between different error conditions:
+        * DB connection issues
+        * attempted insertion of a duplicate username
+        * invalid email address (FE could pre-validate using endpoint)
+
+*

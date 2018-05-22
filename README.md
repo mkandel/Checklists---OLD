@@ -17,5 +17,6 @@ To run the build via Gradle, `cd` into the repository directory and run the foll
 By default, the `clean` and `build` tasks will be run. See the [Gradle documentation about the Java plugin
 for more details about these tasks](https://docs.gradle.org/current/userguide/java_plugin.html).
 
+<!---
 ## Commonly Used Properties
-
+-->

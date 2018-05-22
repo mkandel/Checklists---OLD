@@ -5,14 +5,14 @@
 package mkandel.entities;
 
 import mkandel.BaseUnitTest;
-import mkandel.utils.ErrorMessageEnums;
+import mkandel.utils.ErrorMessageConstants;
 import mkandel.utils.InvalidEmailException;
 import mkandel.utils.RandomString;
 import org.junit.Test;
 
 import java.util.UUID;
 
-import static mkandel.utils.UserTypesEnum.*;
+import static mkandel.utils.UserTypes.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -61,7 +61,7 @@ public class UserUnitTest extends BaseUnitTest {
         try {
             user.setEmail(email);
         } catch (InvalidEmailException ex){
-            String expected = ErrorMessageEnums.INVALID_EMAIL;
+            String expected = ErrorMessageConstants.INVALID_EMAIL;
             assertThat(ex.getMessage(), is(equalTo(expected)));
         }
         email = "some.fake@email.com";
