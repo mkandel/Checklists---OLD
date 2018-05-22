@@ -4,7 +4,7 @@
 
 package mkandel.utils;
 
-public enum UserTypesEnum {
+public enum UserTypes {
     ADMIN,
     USER,
     CREATOR

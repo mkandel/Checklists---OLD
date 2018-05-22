@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static mkandel.utils.UserTypesEnum.*;
+import static mkandel.utils.UserTypes.*;
 
 //@Bean
 public class DbAdapter {

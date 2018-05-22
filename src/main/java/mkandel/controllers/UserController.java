@@ -7,7 +7,7 @@ package mkandel.controllers;
 import mkandel.entities.User;
 import mkandel.outbound.DbAdapter;
 import mkandel.utils.InvalidEmailException;
-import mkandel.utils.UserTypesEnum;
+import mkandel.utils.UserTypes;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -45,7 +45,7 @@ public class UserController {
                         @PathVariable String lName,
                         @PathVariable String alias,
                         @PathVariable String email,
-                        @PathVariable UserTypesEnum type
+                        @PathVariable UserTypes type
     ) throws InvalidEmailException {
         User user = new User();
         user.setfName(fName);
