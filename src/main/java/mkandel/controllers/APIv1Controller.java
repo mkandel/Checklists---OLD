@@ -4,15 +4,11 @@
 
 package mkandel.controllers;
 
-import mkandel.utils.EmailValidator;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import mkandel.utils.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static mkandel.utils.Routes.*;
 
@@ -48,10 +44,10 @@ public class APIv1Controller {
         Map<String, String> ret = new HashMap<>();
         ret.put("email", email);
         if (emailValidator.validateEmail(email)){
-            System.out.println("* Email validated: " + email);
+//            System.out.println("* Email validated: " + email);
             ret.put("status", "ok");
         } else {
-            System.out.println("* Email NOT validated: " + email);
+//            System.out.println("* Email NOT validated: " + email);
             ret.put("status", "invalid");
         }
         return ret;

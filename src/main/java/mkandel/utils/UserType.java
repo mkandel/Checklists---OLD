@@ -4,12 +4,17 @@
 
 package mkandel.utils;
 
-public enum UserTypes {
+public enum UserType {
     ADMIN, CREATOR, USER
 //    ADMIN(0, "Admin"),
 //    CREATOR(1, "Creator"),
 //    USER(2, "User");
 //
-//    private final int id;
+//    private final double id;
 //    private final String text;
+//
+//    UserType(double id, String text){
+//        this.id = id;
+//        this.text = text;
+//    }
 }

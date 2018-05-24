@@ -4,13 +4,11 @@
 
 package mkandel.entities;
 
-import mkandel.utils.EmailValidator;
-import mkandel.utils.InvalidEmailException;
-import mkandel.utils.UserTypes;
+import mkandel.utils.*;
 
-import java.util.UUID;
+import java.util.*;
 
-import static mkandel.utils.ErrorMessageConstants.INVALID_EMAIL;
+import static mkandel.utils.ErrorMessageConstants.*;
 
 public class User {
     private UUID id;
@@ -18,7 +16,7 @@ public class User {
     private String lName;
     private String username;
     private String email;
-    private UserTypes type;
+    private UserType type;
     private Boolean active;
 
     public User() {
@@ -72,11 +70,11 @@ public class User {
         this.email = email;
     }
 
-    public UserTypes getType() {
+    public UserType getType() {
         return type;
     }
 
-    public void setType(UserTypes type) {
+    public void setType(UserType type) {
         this.type = type;
     }
 

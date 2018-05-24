@@ -3,10 +3,9 @@
  */
 
 package mkandel.utils;
-import java.security.SecureRandom;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Random;
+
+import java.security.*;
+import java.util.*;
 
 public class RandomString {
 

@@ -4,15 +4,14 @@
 
 package mkandel.outbound;
 
-import mkandel.entities.User;
-import mkandel.utils.InvalidEmailException;
-import org.springframework.stereotype.Component;
+import mkandel.entities.*;
+import mkandel.utils.*;
+import org.springframework.stereotype.*;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import static mkandel.utils.UserTypes.*;
+import static mkandel.utils.UserType.*;
 
 @Component
 public class DbAdapter {
@@ -21,7 +20,7 @@ public class DbAdapter {
 
     private Connection connection;
     private Statement statement = null;
-//    private PreparedStatement preparedStatement = null;
+    //private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
     public DbAdapter() throws Exception {
@@ -71,14 +70,19 @@ public class DbAdapter {
         this.dbUsername = dbUsername;
     }
 
-    public void saveUser(User user) throws Exception {
+    public Map<String, String> saveUser(User user) throws Exception {
+        Map<String, String> returnVal = new HashMap<>();
         try {
             statement = connection.createStatement();
+            user.save();
         } catch (SQLException ex){
+            throw ex;
+        } catch (InvalidEmailException ex) {
             throw ex;
         } catch (Exception ex) {
             throw ex;
         }
+        return returnVal;
     }
 
     public User getUser(String username) throws Exception {
@@ -86,9 +90,11 @@ public class DbAdapter {
         User user = new User();
 
         try {
-//            String sql = "SELECT * FROM Users WHERE username LIKE ?";
-//            PreparedStatement statement = connection.prepareStatement(sql);
-//            statement.setString(1, username);
+            // Why doesn't this work??
+            //
+            //String sql = "SELECT * FROM Users WHERE username LIKE ?";
+            //PreparedStatement statement = connection.prepareStatement(sql);
+            //statement.setString(1, username);
             statement = connection.createStatement();
             String sql = "SELECT * FROM Users WHERE username LIKE '" + username + "'";
 

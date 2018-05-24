@@ -4,16 +4,12 @@
 
 package mkandel.controllers;
 
-import mkandel.entities.User;
-import mkandel.outbound.DbAdapter;
-import mkandel.utils.InvalidEmailException;
-import mkandel.utils.UserTypes;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import mkandel.entities.*;
+import mkandel.outbound.*;
+import mkandel.utils.*;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 import static mkandel.utils.Routes.*;
 
@@ -61,13 +57,13 @@ public class UserController {
         user.setUsername(username);
         user.setEmail(email);
         int intType = Integer.parseInt(type);
-        UserTypes actualType;
+        UserType actualType;
         if(intType == 0){
-            actualType = UserTypes.ADMIN;
+            actualType = UserType.ADMIN;
         } else if (intType == 1){
-            actualType = UserTypes.CREATOR;
+            actualType = UserType.CREATOR;
         } else {
-            actualType = UserTypes.USER;
+            actualType = UserType.USER;
         }
         user.setType(actualType);
         user.setActive(true);

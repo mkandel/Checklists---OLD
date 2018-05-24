@@ -4,23 +4,20 @@
 
 package mkandel.entities;
 
-import mkandel.BaseUnitTest;
-import mkandel.utils.ErrorMessageConstants;
-import mkandel.utils.InvalidEmailException;
-import mkandel.utils.RandomString;
-import org.junit.Test;
+import mkandel.*;
+import mkandel.utils.*;
+import org.junit.*;
 
-import java.util.UUID;
+import java.util.*;
 
-import static mkandel.utils.UserTypes.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static mkandel.utils.RandomDataGenerator.*;
+import static mkandel.utils.UserType.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 
 public class UserUnitTest extends BaseUnitTest {
 
     private User user = new User();
-    RandomString generator = new RandomString();
 
     @Test
     public void getAndSetId() {
@@ -32,7 +29,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetAndSetfName() {
-        String fName = generator.nextString();
+        String fName = randomString();
         System.out.println("fName: " + fName);
         user.setfName(fName);
         assertThat(fName, equalTo(user.getfName()));
@@ -40,7 +37,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetlName() {
-        String lName = generator.nextString();
+        String lName = randomString();
         System.out.println("lName: " + lName);
         user.setlName(lName);
         assertThat(lName, equalTo(user.getlName()));
@@ -48,7 +45,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetUsername() {
-        String username = generator.nextString();
+        String username = randomString();
         System.out.println("username: " + username);
         user.setUsername(username);
         assertThat(username, equalTo(user.getUsername()));
@@ -56,7 +53,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetEmail() {
-        String email = generator.nextString();
+        String email = randomString();
         System.out.println("email: " + email);
         try {
             user.setEmail(email);
