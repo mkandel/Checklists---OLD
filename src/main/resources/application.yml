@@ -5,4 +5,4 @@ info:
     description: ${description}
     version: ${version}
 server:
-  port: 8090
+  port: 8080
