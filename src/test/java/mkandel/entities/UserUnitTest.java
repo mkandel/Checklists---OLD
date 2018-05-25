@@ -10,7 +10,7 @@ import org.junit.*;
 
 import java.util.*;
 
-import static mkandel.utils.RandomDataGenerator.*;
+import static mkandel.utils.RandomString.*;
 import static mkandel.utils.UserType.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
@@ -21,7 +21,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetId() {
-        UUID uuid = java.util.UUID.randomUUID();
+        UUID uuid = UUID.randomUUID();
         System.out.println("uuid: " + uuid);
         user.setId(uuid);
         assertThat(uuid, equalTo(user.getId()));
@@ -29,7 +29,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetAndSetfName() {
-        String fName = randomString();
+        String fName = generateRandomString();
         System.out.println("fName: " + fName);
         user.setfName(fName);
         assertThat(fName, equalTo(user.getfName()));
@@ -37,7 +37,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetlName() {
-        String lName = randomString();
+        String lName = generateRandomString();
         System.out.println("lName: " + lName);
         user.setlName(lName);
         assertThat(lName, equalTo(user.getlName()));
@@ -45,7 +45,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetUsername() {
-        String username = randomString();
+        String username = generateRandomString();
         System.out.println("username: " + username);
         user.setUsername(username);
         assertThat(username, equalTo(user.getUsername()));
@@ -53,7 +53,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetEmail() {
-        String email = randomString();
+        String email = generateRandomString();
         System.out.println("email: " + email);
         try {
             user.setEmail(email);

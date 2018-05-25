@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists_main.iml" group="Checklists" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists_test.iml" group="Checklists" />
+    </modules>
+  </component>
+</project>

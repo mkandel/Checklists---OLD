@@ -101,7 +101,6 @@ public class DbAdapter {
             ResultSet rs = statement.executeQuery(sql);
 
             while(rs.next()){
-                //Retrieve by column name
                 processReadUser(user, rs);
             }
             rs.close();
@@ -138,6 +137,7 @@ public class DbAdapter {
     }
 
     private void processReadUser(User user, ResultSet rs) throws SQLException, InvalidEmailException {
+        //Retrieve by column name
         user.setfName(rs.getString("FName"));
         user.setlName(rs.getString("lName"));
         user.setUsername(rs.getString("username"));
@@ -154,6 +154,6 @@ public class DbAdapter {
         }
 
         String uuidString = rs.getString("id");
-        user.setId(java.util.UUID.fromString(uuidString));
+        user.setId(UUID.fromString(uuidString));
     }
 }

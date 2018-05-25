@@ -4,6 +4,8 @@
 
 package mkandel.utils;
 
+import org.apache.commons.text.*;
+
 import java.security.*;
 import java.util.*;
 
@@ -16,6 +18,19 @@ public class RandomString {
         for (int idx = 0; idx < buf.length; ++idx)
             buf[idx] = symbols[random.nextInt(symbols.length)];
         return new String(buf);
+    }
+
+    public static String generateRandomString(int length) {
+        RandomStringGenerator randomStringGenerator = new RandomStringGenerator.Builder()
+                .withinRange('A', 'z')
+                .filteredBy(Character::isLetter)
+                .build();
+
+        return randomStringGenerator.generate(length);
+    }
+
+    public static String generateRandomString(){
+        return generateRandomString(8);
     }
 
     public static final String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -58,7 +73,7 @@ public class RandomString {
      * Create session identifiers.
      */
     public RandomString() {
-        this(21);
+        this(8);
     }
 
 }

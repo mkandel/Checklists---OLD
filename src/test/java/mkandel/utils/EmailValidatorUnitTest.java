@@ -7,7 +7,7 @@ package mkandel.utils;
 import mkandel.*;
 import org.junit.*;
 
-import static mkandel.utils.RandomDataGenerator.*;
+import static mkandel.utils.RandomString.*;
 import static org.junit.Assert.*;
 
 public class EmailValidatorUnitTest extends BaseUnitTest {
@@ -23,36 +23,36 @@ public class EmailValidatorUnitTest extends BaseUnitTest {
     @Test
     public void validateEmail_goodEmail_returnsTrue() {
         // @.com
-        String email = randomString() + "@" + randomString(5) + "." + randomAlphabeticString(3);
+        String email = generateRandomString() + "@" + generateRandomString(5) + "." + generateRandomString(3);
         printEmail(email);
         assertTrue(emailValidator.validateEmail(email));
         // @.co.uk
-        email = randomString() + "@" + randomString(5)
-                + "." + randomAlphabeticString(2) + "." + randomAlphabeticString(2);
+        email = generateRandomString() + "@" + generateRandomString(5)
+                + "." + generateRandomString(2) + "." + generateRandomString(2);
         printEmail(email);
         assertTrue(emailValidator.validateEmail(email));
     }
 
     @Test
-    public void validateEmail_badEmails_returnsFalse() {
+    public void validateEmail_badEmail_returnsFalse() {
         // no TLD
-        String email = randomString() + "@" +  randomString(5);
+        String email = generateRandomString() + "@" +  generateRandomString(5);
         printEmail(email);
         assertFalse(emailValidator.validateEmail(email));
         // no domain
-        email = randomString() + "@" +  randomString(3);
+        email = generateRandomString() + "@" +  generateRandomString(3);
         printEmail(email);
         assertFalse(emailValidator.validateEmail(email));
         // no domain, differently
-        email = randomString() + "@." +  randomString(3);
+        email = generateRandomString() + "@." +  generateRandomString(3);
         printEmail(email);
         assertFalse(emailValidator.validateEmail(email));
         // ..
-        email = randomString() + "@" + randomString(5) + ".." +  randomString(3);
+        email = generateRandomString() + "@" + generateRandomString(5) + ".." +  generateRandomString(3);
         printEmail(email);
         assertFalse(emailValidator.validateEmail(email));
         // no @
-        email = randomString() +  randomString(5) + "." + randomAlphabeticString(2);
+        email = generateRandomString() +  generateRandomString(5) + "." + generateRandomString(2);
         printEmail(email);
         assertFalse(emailValidator.validateEmail(email));
     }
