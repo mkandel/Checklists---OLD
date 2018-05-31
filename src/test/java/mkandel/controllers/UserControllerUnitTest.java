@@ -4,25 +4,38 @@
 
 package mkandel.controllers;
 
-import mkandel.BaseUnitTest;
-import mkandel.entities.User;
-import mkandel.utils.RandomString;
-import org.junit.Test;
+import java.util.*;
+import mkandel.*;
+import mkandel.entities.*;
+import mkandel.outbound.*;
+import mkandel.utils.*;
+import org.junit.*;
+import org.mockito.*;
 
-import java.util.List;
-
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.IsEqual.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class UserControllerUnitTest extends BaseUnitTest {
 
+    @Mock
+    DbAdapter dbAdapter;
+
+    @InjectMocks
     private UserController userController = new UserController();
-    RandomString generator = new RandomString();
+//    mkandel.utils.RandomGenerator generator = new mkandel.utils.RandomGenerator();
 
     @Test
     public void testUsersEndpoint() throws Exception {
+        User user = new UserBuilder().build();
+        List<User> users = new ArrayList<>();
+        users.add(user);
+        when(dbAdapter.getUsers()).thenReturn(users);
         List<User> actual = userController.users();
-        assert actual.size() == 2;
+        assert actual.size() == users.size();
+        users.add(user);
+        actual = userController.users();
+        assert actual.size() == users.size();
     }
 
     // I know this is not really a good test

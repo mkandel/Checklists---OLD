@@ -7,7 +7,7 @@ package mkandel.utils;
 import mkandel.*;
 import org.junit.*;
 
-import static mkandel.utils.RandomString.*;
+import static mkandel.utils.RandomGenerator.*;
 import static org.junit.Assert.*;
 
 public class EmailValidatorUnitTest extends BaseUnitTest {

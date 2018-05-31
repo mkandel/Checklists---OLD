@@ -4,13 +4,12 @@
 
 package mkandel.entities;
 
+import java.util.*;
 import mkandel.*;
 import mkandel.utils.*;
 import org.junit.*;
 
-import java.util.*;
-
-import static mkandel.utils.RandomString.*;
+import static mkandel.utils.RandomGenerator.*;
 import static mkandel.utils.UserType.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
