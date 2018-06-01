@@ -20,26 +20,26 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetId() {
-        UUID uuid = UUID.randomUUID();
+        UUID uuid = generateRandomUUID();
         System.out.println("uuid: " + uuid);
         user.setId(uuid);
         assertThat(uuid, equalTo(user.getId()));
     }
 
     @Test
-    public void getAndSetAndSetfName() {
-        String fName = generateRandomString();
-        System.out.println("fName: " + fName);
-        user.setfName(fName);
-        assertThat(fName, equalTo(user.getfName()));
+    public void getAndSetAndSetFname() {
+        String Fname = generateRandomString();
+        System.out.println("Fname: " + Fname);
+        user.setFname(Fname);
+        assertThat(Fname, equalTo(user.getFname()));
     }
 
     @Test
-    public void getAndSetlName() {
-        String lName = generateRandomString();
-        System.out.println("lName: " + lName);
-        user.setlName(lName);
-        assertThat(lName, equalTo(user.getlName()));
+    public void getAndSetLname() {
+        String Lname = generateRandomString();
+        System.out.println("Lname: " + Lname);
+        user.setLname(Lname);
+        assertThat(Lname, equalTo(user.getLname()));
     }
 
     @Test

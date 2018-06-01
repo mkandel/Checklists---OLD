@@ -3,11 +3,11 @@
 --
 
 CREATE TABLE IF NOT EXISTS `checklists`.`Users` (
-  `id` VARCHAR(36) NOT NULL DEFAULT 'uuid()',
+  `id` VARCHAR(36) NOT NULL DEFAULT GENERATED ALWAYS AS (UUID()),
   `username` VARCHAR(25) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `fName` VARCHAR(25) NOT NULL,
-  `lName` VARCHAR(25) NOT NULL,
+  `fname` VARCHAR(25) NOT NULL,
+  `lname` VARCHAR(25) NOT NULL,
   `email` VARCHAR(55) NOT NULL,
   `type` VARCHAR(10) NOT NULL DEFAULT 'USER',
   `active` TINYINT(4) NOT NULL DEFAULT '1',
@@ -17,13 +17,13 @@ CREATE TABLE IF NOT EXISTS `checklists`.`Users` (
  )
 ENGINE = InnoDB
 
-CREATE
-DEFINER=`root`@`localhost`
-TRIGGER `checklists`.`Users_BEFORE_INSERT`
-BEFORE INSERT ON `checklists`.`Users`
+DELIMITER ;;
+CREATE TRIGGER before_insert_users
+BEFORE INSERT ON Users
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL THEN
-    SET new.id = uuid();
+  IF new.uuid IS NULL THEN
+    SET new.uuid = uuid();
   END IF;
 END
+;;

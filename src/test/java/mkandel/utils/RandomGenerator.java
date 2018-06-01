@@ -4,6 +4,7 @@
 
 package mkandel.utils;
 
+import java.util.*;
 import org.apache.commons.text.*;
 
 public class RandomGenerator {
@@ -19,6 +20,10 @@ public class RandomGenerator {
 
     public static String generateRandomString(){
         return generateRandomString(8);
+    }
+
+    public static UUID generateRandomUUID(){
+        return UUID.randomUUID();
     }
 }
 

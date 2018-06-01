@@ -42,6 +42,10 @@ public class UserControllerUnitTest extends BaseUnitTest {
     @Test
     public void testUserEndpoint() throws Exception {
         String username = "admin";
+        User user = new UserBuilder().withUsername(username).build();
+
+        when(dbAdapter.getUser(username)).thenReturn(user);
+
         User actual = userController.user(username);
 
         assertThat(username, equalTo(actual.getUsername()));

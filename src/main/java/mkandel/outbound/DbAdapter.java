@@ -4,12 +4,11 @@
 
 package mkandel.outbound;
 
+import java.sql.*;
+import java.util.*;
 import mkandel.entities.*;
 import mkandel.utils.*;
 import org.springframework.stereotype.*;
-
-import java.sql.*;
-import java.util.*;
 
 import static mkandel.utils.UserType.*;
 
@@ -138,8 +137,8 @@ public class DbAdapter {
 
     private void processReadUser(User user, ResultSet rs) throws SQLException, InvalidEmailException {
         //Retrieve by column name
-        user.setfName(rs.getString("FName"));
-        user.setlName(rs.getString("lName"));
+        user.setFname(rs.getString("FName"));
+        user.setLname(rs.getString("Lname"));
         user.setUsername(rs.getString("username"));
         user.setActive(rs.getBoolean("active"));
         user.setEmail(rs.getString("email"));

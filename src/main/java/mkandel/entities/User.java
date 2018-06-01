@@ -4,16 +4,15 @@
 
 package mkandel.entities;
 
-import mkandel.utils.*;
-
 import java.util.*;
+import mkandel.utils.*;
 
 import static mkandel.utils.ErrorMessageConstants.*;
 
 public class User {
     private UUID id;
-    private String fName;
-    private String lName;
+    private String Fname;
+    private String Lname;
     private String username;
     private String email;
     private UserType type;
@@ -34,20 +33,20 @@ public class User {
         this.id = id;
     }
 
-    public String getfName() {
-        return fName;
+    public String getFname() {
+        return Fname;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setFname(String Fname) {
+        this.Fname = Fname;
     }
 
-    public String getlName() {
-        return lName;
+    public String getLname() {
+        return Lname;
     }
 
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setLname(String Lname) {
+        this.Lname = Lname;
     }
 
     public String getUsername() {

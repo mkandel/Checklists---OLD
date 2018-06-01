@@ -4,12 +4,11 @@
 
 package mkandel.controllers;
 
+import java.util.*;
 import mkandel.entities.*;
 import mkandel.outbound.*;
 import mkandel.utils.*;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 import static mkandel.utils.Routes.*;
 
@@ -45,15 +44,15 @@ public class UserController {
     }
 
     @PutMapping(ADD_USER)
-    public User addUser(@PathVariable String fName,
-                        @PathVariable String lName,
+    public User addUser(@PathVariable String Fname,
+                        @PathVariable String Lname,
                         @PathVariable String username,
                         @PathVariable String email,
                         @PathVariable String type
     ) throws InvalidEmailException {
         User user = new User();
-        user.setfName(fName);
-        user.setlName(lName);
+        user.setFname(Fname);
+        user.setLname(Lname);
         user.setUsername(username);
         user.setEmail(email);
         int intType = Integer.parseInt(type);
