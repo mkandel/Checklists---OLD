@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public class Checklist {
     private UUID id;
+    private UUID template;
     private UUID createUserId;
     private UUID updateUserId;
     private Timestamp createTime;
