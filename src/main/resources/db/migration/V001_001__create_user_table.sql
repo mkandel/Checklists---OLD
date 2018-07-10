@@ -2,7 +2,8 @@
 -- Copyright (c) 2018. Marc Kandel
 --
 
-CREATE TABLE IF NOT EXISTS `checklists`.`Users` (
+DROP TABLE IF EXISTS `checklists`.`Users`;
+CREATE TABLE `checklists`.`Users` (
   `id` VARCHAR(36) NOT NULL DEFAULT 'uuid()',
   `username` VARCHAR(25) NOT NULL,
   `password` VARCHAR(45) NOT NULL,

@@ -8,15 +8,13 @@ import mkandel.utils.EmailValidator;
 import mkandel.utils.InvalidEmailException;
 import mkandel.utils.UserTypes;
 
-import java.util.UUID;
-
 import static mkandel.utils.ErrorMessageConstants.INVALID_EMAIL;
 
-public class User {
-    private UUID id;
+public class User extends BaseEntity {
+    private String username;
+    private String password;
     private String fName;
     private String lName;
-    private String username;
     private String email;
     private UserTypes type;
     private Boolean active;
@@ -26,14 +24,6 @@ public class User {
 
     public User(String username) {
         this.username = username;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getfName() {
@@ -86,6 +76,14 @@ public class User {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void save() throws Exception {

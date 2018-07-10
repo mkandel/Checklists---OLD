@@ -4,5 +4,5 @@
 
 package mkandel.entities;
 
-public class Team {
+public class Team extends BaseEntity {
 }

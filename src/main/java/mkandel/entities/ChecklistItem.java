@@ -6,9 +6,8 @@ package mkandel.entities;
 
 import java.util.UUID;
 
-public class ChecklistItem {
-    private UUID id;
-    private UUID parentId;
+public class ChecklistItem extends BaseEntity {
+    private UUID parentChecklistId;
     private String itemText;
     private Boolean completed;
 
@@ -17,31 +16,23 @@ public class ChecklistItem {
         this.completed = false;
     }
 
-    public ChecklistItem(UUID parentId) {
+    public ChecklistItem(UUID parentChecklistId) {
         this.completed = false;
-        this.parentId = parentId;
+        this.parentChecklistId = parentChecklistId;
     }
 
-    public ChecklistItem(UUID parentId, String itemText) {
+    public ChecklistItem(UUID parentChecklistId, String itemText) {
         this.completed = false;
-        this.parentId = parentId;
+        this.parentChecklistId = parentChecklistId;
         this.itemText = itemText;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getParentChecklistId() {
+        return parentChecklistId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public UUID getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(UUID parentId) {
-        this.parentId = parentId;
+    public void setParentChecklistId(UUID parentChecklistId) {
+        this.parentChecklistId = parentChecklistId;
     }
 
     public String getItemText() {
