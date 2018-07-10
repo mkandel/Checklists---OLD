@@ -11,7 +11,6 @@ public class ChecklistItem extends BaseEntity {
     private String itemText;
     private Boolean completed;
 
-
     public ChecklistItem() {
         this.completed = false;
     }
