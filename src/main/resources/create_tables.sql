@@ -19,8 +19,7 @@ ENGINE = InnoDB
 
 DELIMITER ;;
 CREATE TRIGGER before_insert_users
-BEFORE INSERT ON Users
-FOR EACH ROW
+BEFORE INSERT ON Users FOR EACH ROW
 BEGIN
   IF new.uuid IS NULL THEN
     SET new.uuid = uuid();
