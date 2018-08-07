@@ -4,19 +4,35 @@
 
 package mkandel.entities;
 
-import java.util.*;
-import mkandel.utils.*;
+import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import mkandel.utils.EmailValidator;
+import mkandel.utils.InvalidEmailException;
+import mkandel.utils.UserType;
+import org.hibernate.annotations.GenericGenerator;
 
-import static mkandel.utils.ErrorMessageConstants.*;
+import static mkandel.utils.ErrorMessageConstants.INVALID_EMAIL;
 
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", unique = true)
     private UUID id;
+    private String username;
+    private String password;
     private String Fname;
     private String Lname;
-    private String username;
     private String email;
+    private boolean active;
+
+//    @OneToOne()
     private UserType type;
-    private Boolean active;
 
     public User() {
     }
@@ -77,18 +93,19 @@ public class User {
         this.type = type;
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
-    public void save() throws Exception {
-        // save User to DB
-//        dbAdapter.saveUser(this);
-        // read back user from DB and replace all values with the ones read back
-        //      especially, set this.id for new User
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

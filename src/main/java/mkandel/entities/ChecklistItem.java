@@ -6,7 +6,12 @@ package mkandel.entities;
 
 import java.util.UUID;
 
+//@Entity
 public class ChecklistItem {
+//    @Id
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+//    @Column(name = "id", unique = true)
     private UUID id;
     private UUID parentId;
     private String itemText;

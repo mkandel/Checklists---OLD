@@ -8,7 +8,12 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.UUID;
 
+//@Entity
 public class Checklist {
+//    @Id
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+//    @Column(name = "id", unique = true)
     private UUID id;
     private UUID createUserId;
     private UUID updateUserId;
