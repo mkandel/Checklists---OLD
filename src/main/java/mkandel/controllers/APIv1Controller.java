@@ -4,13 +4,20 @@
 
 package mkandel.controllers;
 
-import mkandel.utils.*;
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
+import mkandel.utils.EmailValidator;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
-
-import static mkandel.utils.Routes.*;
+import static mkandel.utils.Routes.BASE;
+import static mkandel.utils.Routes.HEALTH;
+import static mkandel.utils.Routes.TEAPOT;
+import static mkandel.utils.Routes.USER_TYPES;
+import static mkandel.utils.Routes.VALIDADTE_EMAIL;
 
 @RestController
 public class APIv1Controller {
@@ -19,7 +26,8 @@ public class APIv1Controller {
      *  /api/v1/users endpoint:
      *          @Returns: List of all users in the system
      *
-     * @TODO: Permissions, restrict users to only see what they have access to
+     *  @TODO: Permissions, restrict users to only see what they have access to
+     *
      */
     @RequestMapping(BASE)
     public String apiRoot(){
