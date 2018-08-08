@@ -7,12 +7,10 @@ package mkandel.entities;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import mkandel.utils.EmailValidator;
 import mkandel.utils.InvalidEmailException;
 import mkandel.utils.UserType;
-import org.hibernate.annotations.GenericGenerator;
 
 import static mkandel.utils.ErrorMessageConstants.INVALID_EMAIL;
 
@@ -20,18 +18,16 @@ import static mkandel.utils.ErrorMessageConstants.INVALID_EMAIL;
 public class User {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", unique = true)
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(unique = true)
     private UUID id;
     private String username;
     private String password;
-    private String Fname;
-    private String Lname;
+    private String fname;
+    private String lname;
     private String email;
     private boolean active;
-
-//    @OneToOne()
     private UserType type;
 
     public User() {
@@ -50,19 +46,19 @@ public class User {
     }
 
     public String getFname() {
-        return Fname;
+        return fname;
     }
 
     public void setFname(String Fname) {
-        this.Fname = Fname;
+        this.fname = Fname;
     }
 
     public String getLname() {
-        return Lname;
+        return lname;
     }
 
     public void setLname(String Lname) {
-        this.Lname = Lname;
+        this.lname = Lname;
     }
 
     public String getUsername() {

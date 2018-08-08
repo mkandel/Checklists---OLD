@@ -4,15 +4,18 @@
 
 package mkandel.controllers;
 
-import java.util.*;
-import mkandel.entities.*;
-import mkandel.outbound.*;
+import java.util.List;
+import mkandel.entities.User;
+import mkandel.outbound.DbAdapter;
 import mkandel.outbound.repositories.UserRepository;
-import mkandel.utils.*;
+import mkandel.utils.InvalidEmailException;
+import mkandel.utils.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import static mkandel.utils.Routes.*;
+import static mkandel.utils.Routes.ADD_USER;
+import static mkandel.utils.Routes.USER;
+import static mkandel.utils.Routes.USERS;
 
 @RestController
 public class UserController {
