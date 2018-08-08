@@ -4,19 +4,19 @@
 
 package mkandel.outbound;
 
-import java.util.Properties;
-import javax.sql.DataSource;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
+import java.util.Properties;
+
 //@Component
 @Configuration
 //@EnableTransactionManagement
-@EntityScan
-@ComponentScan
+//@EntityScan
+@ComponentScan("mkandel.entities")
 public class DbAdapter {
 //    @Bean
 //    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
