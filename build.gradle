@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) 2018. Marc Kandel
+ */
 buildscript {
     ext {
         springBootVersion = '2.0.4.RELEASE'
@@ -13,6 +16,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'checkstyle'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -24,16 +28,21 @@ repositories {
     mavenCentral()
 }
 
+checkstyle {
+    toolVersion "8.11"
+    checkstyleMain.configFile = "$projectDir/config/checkstyle-main.xml" as File
+    checkstyleTest.configFile = "$projectDir/config/checkstyle-test.xml" as File
+}
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-rest')
-    compile('org.springframework.boot:spring-boot-starter-security')
+    //compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
     runtime('org.springframework.boot:spring-boot-devtools')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.springframework.security:spring-security-test')
+    //testCompile('org.springframework.security:spring-security-test')
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.21.0'
 }
-/*
- * Copyright (c) 2018. Marc Kandel
- */

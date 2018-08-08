@@ -2,10 +2,10 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.outbound.repositories;
+package com.mkandel.checklists.outbound.repositories;
 
+import com.mkandel.checklists.entities.User;
 import java.util.List;
-import mkandel.entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -4,11 +4,13 @@
 
 package mkandel.utils;
 
-import mkandel.*;
-import org.junit.*;
+import com.mkandel.checklists.utils.EmailValidator;
+import mkandel.BaseUnitTest;
+import org.junit.Test;
 
-import static mkandel.utils.RandomGenerator.*;
-import static org.junit.Assert.*;
+import static mkandel.utils.RandomGenerator.generateRandomString;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class EmailValidatorUnitTest extends BaseUnitTest {
     Boolean debug = true;

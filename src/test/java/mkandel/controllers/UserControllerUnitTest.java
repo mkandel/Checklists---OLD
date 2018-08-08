@@ -4,17 +4,20 @@
 
 package mkandel.controllers;
 
-import java.util.*;
-import mkandel.*;
-import mkandel.entities.*;
-import mkandel.outbound.*;
-import mkandel.utils.*;
-import org.junit.*;
-import org.mockito.*;
+import com.mkandel.checklists.controllers.UserController;
+import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.outbound.DbAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import mkandel.BaseUnitTest;
+import mkandel.utils.UserBuilder;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
-import static org.hamcrest.core.IsEqual.*;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 public class UserControllerUnitTest extends BaseUnitTest {
 

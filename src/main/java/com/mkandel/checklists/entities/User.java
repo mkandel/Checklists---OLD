@@ -2,19 +2,21 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.entities;
+package com.mkandel.checklists.entities;
 
+import com.mkandel.checklists.utils.EmailValidator;
+import com.mkandel.checklists.utils.InvalidEmailException;
+import com.mkandel.checklists.utils.UserType;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import mkandel.utils.EmailValidator;
-import mkandel.utils.InvalidEmailException;
-import mkandel.utils.UserType;
+import javax.persistence.Table;
 
-import static mkandel.utils.ErrorMessageConstants.INVALID_EMAIL;
+import static com.mkandel.checklists.utils.ErrorMessageConstants.INVALID_EMAIL;
 
 @Entity
+@Table(name = "Users")
 public class User {
 
     @Id

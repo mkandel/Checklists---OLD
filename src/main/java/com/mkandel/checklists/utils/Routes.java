@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.utils;
+package com.mkandel.checklists.utils;
 
 public class Routes {
     public static final String BASE = "/api";

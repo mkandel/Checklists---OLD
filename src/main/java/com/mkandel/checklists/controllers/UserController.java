@@ -2,20 +2,20 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.controllers;
+package com.mkandel.checklists.controllers;
 
+import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.outbound.DbAdapter;
+import com.mkandel.checklists.outbound.repositories.UserRepository;
+import com.mkandel.checklists.utils.InvalidEmailException;
+import com.mkandel.checklists.utils.Routes;
+import com.mkandel.checklists.utils.UserType;
 import java.util.List;
-import mkandel.entities.User;
-import mkandel.outbound.DbAdapter;
-import mkandel.outbound.repositories.UserRepository;
-import mkandel.utils.InvalidEmailException;
-import mkandel.utils.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import static mkandel.utils.Routes.ADD_USER;
-import static mkandel.utils.Routes.USER;
-import static mkandel.utils.Routes.USERS;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
@@ -40,19 +40,19 @@ public class UserController {
      *
      * @TODO: Permissions, restrict users to only see what they have access to
      */
-    @GetMapping(USERS)
+    @GetMapping(Routes.USERS)
     public List<User> users() throws Exception {
 //        List<User> users = dbAdapter.getUsers();
 //        return users;
         return userRepository.findAll();
     }
 
-    @GetMapping(USER)
+    @GetMapping(Routes.USER)
     public User user(@PathVariable String username) throws Exception {
         return userRepository.findByUsername(username);
     }
 
-    @PutMapping(ADD_USER)
+    @PutMapping(Routes.ADD_USER)
     public User addUser(@PathVariable String Fname,
                         @PathVariable String Lname,
                         @PathVariable String username,

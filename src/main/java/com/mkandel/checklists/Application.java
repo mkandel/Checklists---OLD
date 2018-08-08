@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel;
+package com.mkandel.checklists;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

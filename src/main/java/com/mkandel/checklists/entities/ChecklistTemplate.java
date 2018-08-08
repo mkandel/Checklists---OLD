@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.entities;
+package com.mkandel.checklists.entities;
 
 import java.util.UUID;
 

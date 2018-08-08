@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.utils;
+package com.mkandel.checklists.utils;
 
 public enum UserType {
 //    ADMIN, CREATOR, USER

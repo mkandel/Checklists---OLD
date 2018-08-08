@@ -4,10 +4,11 @@
 
 package mkandel.utils;
 
-import java.util.*;
-import mkandel.entities.*;
+import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.utils.UserType;
+import java.util.UUID;
 
-import static mkandel.utils.RandomGenerator.*;
+import static mkandel.utils.RandomGenerator.generateRandomUUID;
 
 public class UserBuilder implements Builder {
 

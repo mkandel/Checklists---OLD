@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.outbound;
+package com.mkandel.checklists.outbound;
 
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -15,7 +15,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 //@Component
 @Configuration
 //@EnableTransactionManagement
-@EntityScan
+@EntityScan("com.mkandel.checklists.entities")
 @ComponentScan
 public class DbAdapter {
 //    @Bean

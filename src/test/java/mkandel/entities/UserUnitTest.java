@@ -4,15 +4,21 @@
 
 package mkandel.entities;
 
-import java.util.*;
-import mkandel.*;
-import mkandel.utils.*;
-import org.junit.*;
+import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.utils.ErrorMessageConstants;
+import com.mkandel.checklists.utils.InvalidEmailException;
+import java.util.UUID;
+import mkandel.BaseUnitTest;
+import org.junit.Test;
 
-import static mkandel.utils.RandomGenerator.*;
-import static mkandel.utils.UserType.*;
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import static com.mkandel.checklists.utils.UserType.ADMIN;
+import static com.mkandel.checklists.utils.UserType.CREATOR;
+import static com.mkandel.checklists.utils.UserType.USER;
+import static mkandel.utils.RandomGenerator.generateRandomString;
+import static mkandel.utils.RandomGenerator.generateRandomUUID;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class UserUnitTest extends BaseUnitTest {
 
