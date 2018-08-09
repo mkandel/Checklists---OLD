@@ -11,12 +11,13 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 //@Entity
-//@Table(name = "Teams")
-public class Team {
+//@Table(name = "UserTeams")
+public class UserTeam {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", unique = true)
     private UUID id;
-    private String name;
+    private UUID user;
+    private UUID team;
 }

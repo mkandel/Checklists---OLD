@@ -1,8 +1,17 @@
 # placeholders will be populated by Gradle at build time
-info:
-  app:
-    name: ${name}
-    description: ${description}
-    version: ${version}
+#info:
+#  app:
+#    name: ${name}
+#    description: ${description}
+#    version: ${version}
 server:
   port: 8080
+
+
+spring:
+  #profiles:
+  #  active: development
+  flyway:
+      enabled: true
+      check-location: false
+      locations: classpath:db/migration

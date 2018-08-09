@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     DbAdapter dbAdapter;
 
-    @Autowired
+    final
     UserRepository userRepository;
 
-    public UserController() {
+    @Autowired
+    public UserController(UserRepository userRepository) {
         try {
             this.dbAdapter = new DbAdapter();
         } catch (Exception ex) {
@@ -32,6 +33,7 @@ public class UserController {
             System.out.println("*** GRRRRRRRR ***");
             throw ex;
         }
+        this.userRepository = userRepository;
     }
 
     /**

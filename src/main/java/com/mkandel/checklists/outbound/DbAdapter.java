@@ -6,6 +6,7 @@ package com.mkandel.checklists.outbound;
 
 import java.util.Properties;
 import javax.sql.DataSource;
+import org.flywaydb.core.Flyway;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,7 +23,7 @@ public class DbAdapter {
 //    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 //        LocalContainerEntityManagerFactoryBean em
 //                = new LocalContainerEntityManagerFactoryBean();
-//        em.setDataSource(dataSource());
+//        em.setDataSource(datasource());
 //        em.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
 //
 //        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -34,15 +35,23 @@ public class DbAdapter {
 
     @Bean
     public DataSource dataSource(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/checklists" +
+        DriverManagerDataSource datasource = new DriverManagerDataSource();
+        datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        datasource.setUrl("jdbc:mysql://127.0.0.1:3306/checklists" +
                 "?autoReconnect=true" +
                 "&useSSL=false" +
                 "&serverTimezone=UTC");
-        dataSource.setUsername( "sa" );
-        dataSource.setPassword( "sa" );
-        return dataSource;
+        datasource.setUsername( "sa" );
+        datasource.setPassword( "sa" );
+        runFlyway(datasource);
+        return datasource;
+    }
+
+    private void runFlyway(DataSource datasource) {
+        // Create the Flyway instance
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(datasource);
+        flyway.migrate();
     }
 
 //    @Bean
