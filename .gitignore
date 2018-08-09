@@ -6,4 +6,5 @@ out
 target
 .DS_Store
 .idea/libraries/*
+.idea/modules/*
 .idea/dbnavigator.xml

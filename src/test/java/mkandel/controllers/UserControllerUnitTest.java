@@ -6,7 +6,7 @@ package mkandel.controllers;
 
 import com.mkandel.checklists.controllers.UserController;
 import com.mkandel.checklists.entities.User;
-import com.mkandel.checklists.outbound.DbAdapter;
+import com.mkandel.checklists.outbound.repositories.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import mkandel.BaseUnitTest;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 public class UserControllerUnitTest extends BaseUnitTest {
 
     @Mock
-    DbAdapter dbAdapter;
+    UserRepository userRepository;
 
     @InjectMocks
     private UserController userController = new UserController();
@@ -33,7 +33,7 @@ public class UserControllerUnitTest extends BaseUnitTest {
         User user = new UserBuilder().build();
         List<User> users = new ArrayList<>();
         users.add(user);
-        when(dbAdapter.getUsers()).thenReturn(users);
+        when(userRepository.findAll()).thenReturn(users);
         List<User> actual = userController.users();
         assert actual.size() == users.size();
         users.add(user);
@@ -47,7 +47,7 @@ public class UserControllerUnitTest extends BaseUnitTest {
         String username = "admin";
         User user = new UserBuilder().withUsername(username).build();
 
-        when(dbAdapter.getUser(username)).thenReturn(user);
+        when(userRepository.findByUsername(username)).thenReturn(user);
 
         User actual = userController.user(username);
 

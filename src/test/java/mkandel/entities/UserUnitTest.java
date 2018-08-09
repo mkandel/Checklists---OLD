@@ -85,8 +85,8 @@ public class UserUnitTest extends BaseUnitTest {
         assertThat(CREATOR, equalTo(user.getType()));
     }
 
-    @Test
-    public void save() throws Exception {
-        user.save();
-    }
+//    @Test
+//    public void save() throws Exception {
+//        user.save();
+//    }
 }

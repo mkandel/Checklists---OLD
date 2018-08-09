@@ -4,8 +4,8 @@
 
 package mkandel.utils;
 
-import java.util.*;
-import org.apache.commons.text.*;
+import java.util.UUID;
+import org.apache.commons.text.RandomStringGenerator;
 
 public class RandomGenerator {
 
