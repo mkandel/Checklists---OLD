@@ -4,7 +4,7 @@
 
 DROP TABLE IF EXISTS `checklists`.`Users`;
 CREATE TABLE `checklists`.`Users` (
-  `id` VARCHAR(36) NOT NULL DEFAULT 'uuid()',
+  `id` VARCHAR(36) NOT NULL,
   `username` VARCHAR(25) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `fname` VARCHAR(25) NOT NULL,
