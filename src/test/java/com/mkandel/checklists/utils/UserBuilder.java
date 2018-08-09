@@ -2,13 +2,12 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.utils;
+package com.mkandel.checklists.utils;
 
 import com.mkandel.checklists.entities.User;
-import com.mkandel.checklists.utils.UserType;
 import java.util.UUID;
 
-import static mkandel.utils.RandomGenerator.generateRandomUUID;
+import static com.mkandel.checklists.utils.RandomGenerator.generateRandomUUID;
 
 public class UserBuilder implements Builder {
 

@@ -14,10 +14,10 @@ CREATE TABLE `checklists`.`Checklists` (
   `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updateDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  CONSTRAINT FK_ChecklistCreateUser_Users FOREIGN KEY (createdBy) REFERENCES Users (id)
-  CONSTRAINT FK_ChecklistsUpdateUser_Users FOREIGN KEY (updatedBy) REFERENCES Users (id)
-  CONSTRAINT FK_ChecklistsOwnedBy_Users FOREIGN KEY (ownedBy) REFERENCES Users (id)
-  CONSTRAINT FK_ChecklistsTemplateId_Templates FOREIGN KEY (templateId) REFERENCES ChecklistTemplates (id)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
+--   CONSTRAINT FK_ChecklistCreateUser_Users FOREIGN KEY (createdBy) REFERENCES Users (id),
+--   CONSTRAINT FK_ChecklistsUpdateUser_Users FOREIGN KEY (updatedBy) REFERENCES Users (id),
+--   CONSTRAINT FK_ChecklistsOwnedBy_Users FOREIGN KEY (ownedBy) REFERENCES Users (id),
+--   CONSTRAINT FK_ChecklistsTemplateId_Templates FOREIGN KEY (templateId) REFERENCES ChecklistTemplates (id)
  )
 ENGINE = InnoDB

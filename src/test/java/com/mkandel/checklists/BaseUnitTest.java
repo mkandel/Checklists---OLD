@@ -2,9 +2,9 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel;
+package com.mkandel.checklists;
 
-import mkandel.utils.categories.UnitTest;
+import com.mkandel.checklists.utils.categories.UnitTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.experimental.categories.Category;

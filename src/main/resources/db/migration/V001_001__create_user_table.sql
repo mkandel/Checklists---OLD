@@ -11,19 +11,9 @@ CREATE TABLE `checklists`.`Users` (
   `lname` VARCHAR(25) NOT NULL,
   `email` VARCHAR(55) NOT NULL,
   `type` INT NOT NULL DEFAULT 3,
-  `active` TINYINT(4) NOT NULL DEFAULT '1',
+  `active` TINYINT(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC)
  )
 ENGINE = InnoDB
-
-DELIMITER ;;
-CREATE TRIGGER users_before_insert
-BEFORE INSERT ON Users FOR EACH ROW
-BEGIN
-  IF new.uuid IS NULL THEN
-    SET new.uuid = uuid();
-  END IF;
-END
-;;

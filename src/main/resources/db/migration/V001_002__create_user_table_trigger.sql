@@ -1,6 +1,5 @@
 DELIMITER |
 CREATE
-DEFINER=`root`@`localhost`
 TRIGGER `checklists`.`Users_BEFORE_INSERT`
 BEFORE INSERT ON `checklists`.`Users`
 FOR EACH ROW

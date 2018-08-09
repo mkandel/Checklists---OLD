@@ -2,22 +2,21 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.entities;
+package com.mkandel.checklists.entities;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Objects;
-import java.util.UUID;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {

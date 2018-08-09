@@ -12,6 +12,10 @@ spring:
   #profiles:
   #  active: development
   flyway:
-      enabled: true
-      check-location: false
-      locations: classpath:db/migration
+    enabled: true
+    check-location: false
+    locations: classpath:db/migration
+    sqlMigrationPrefix: V
+    repeatableSqlMigrationPrefix: R
+    table: FlywayMigrationHistory
+    baselineOnMigrate: true

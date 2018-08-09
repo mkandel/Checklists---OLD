@@ -14,8 +14,8 @@ CREATE TABLE `checklists`.`ChecklistTemplates` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `title_UNIQUE` (`title` ASC)
-  CONSTRAINT FK_ChecklistTemplatesCreateUser_Users FOREIGN KEY (createdBy) REFERENCES Users (id)
-  CONSTRAINT FK_ChecklistsTemplatesUpdateUser_Users FOREIGN KEY (updatedBy) REFERENCES Users (id)
-  CONSTRAINT FK_ChecklistsTemplatesOwnedBy_Users FOREIGN KEY (ownedBy) REFERENCES Users (id)
+--   CONSTRAINT FK_ChecklistTemplatesCreateUser_Users FOREIGN KEY (createdBy) REFERENCES Users (id),
+--   CONSTRAINT FK_ChecklistsTemplatesUpdateUser_Users FOREIGN KEY (updatedBy) REFERENCES Users (id),
+--   CONSTRAINT FK_ChecklistsTemplatesOwnedBy_Users FOREIGN KEY (ownedBy) REFERENCES Users (id)
  )
 ENGINE = InnoDB

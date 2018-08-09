@@ -2,11 +2,10 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.entities;
+package com.mkandel.checklists.entities;
 
-import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.utils.Builder;
 import com.mkandel.checklists.utils.UserType;
-import mkandel.utils.Builder;
 
 import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
 import static com.mkandel.checklists.utils.UserType.USER;

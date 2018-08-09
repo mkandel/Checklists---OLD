@@ -2,20 +2,19 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.entities;
+package com.mkandel.checklists.entities;
 
-import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.BaseUnitTest;
 import com.mkandel.checklists.utils.ErrorMessageConstants;
 import com.mkandel.checklists.utils.InvalidEmailException;
 import java.util.UUID;
-import mkandel.BaseUnitTest;
 import org.junit.Test;
 
+import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
+import static com.mkandel.checklists.utils.RandomGenerator.generateRandomUUID;
 import static com.mkandel.checklists.utils.UserType.ADMIN;
 import static com.mkandel.checklists.utils.UserType.CREATOR;
 import static com.mkandel.checklists.utils.UserType.USER;
-import static mkandel.utils.RandomGenerator.generateRandomString;
-import static mkandel.utils.RandomGenerator.generateRandomUUID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;

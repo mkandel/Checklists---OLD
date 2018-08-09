@@ -2,15 +2,14 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.controllers;
+package com.mkandel.checklists.controllers;
 
-import com.mkandel.checklists.controllers.UserController;
+import com.mkandel.checklists.BaseUnitTest;
 import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
+import com.mkandel.checklists.utils.UserBuilder;
 import java.util.ArrayList;
 import java.util.List;
-import mkandel.BaseUnitTest;
-import mkandel.utils.UserBuilder;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -26,7 +25,7 @@ public class UserControllerUnitTest extends BaseUnitTest {
 
     @InjectMocks
     private UserController userController = new UserController(userRepository);
-//    mkandel.utils.RandomGenerator generator = new mkandel.utils.RandomGenerator();
+//    com.mkandel.checklists.utils.RandomGenerator generator = new com.mkandel.checklists.utils.RandomGenerator();
 
     @Test
     public void testUsersEndpoint() throws Exception {

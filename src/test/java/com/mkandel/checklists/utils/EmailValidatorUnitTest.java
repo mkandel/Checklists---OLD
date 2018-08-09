@@ -2,13 +2,12 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package mkandel.utils;
+package com.mkandel.checklists.utils;
 
-import com.mkandel.checklists.utils.EmailValidator;
-import mkandel.BaseUnitTest;
+import com.mkandel.checklists.BaseUnitTest;
 import org.junit.Test;
 
-import static mkandel.utils.RandomGenerator.generateRandomString;
+import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

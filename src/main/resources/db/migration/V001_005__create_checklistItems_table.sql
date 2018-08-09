@@ -14,7 +14,7 @@ CREATE TABLE `checklists`.`ChecklistItems` (
   `createDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updateDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  CONSTRAINT FK_ChecklistItems_Checklists FOREIGN KEY (parentChecklistId) REFERENCES Checklists (id)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
+--   CONSTRAINT FK_ChecklistItems_Checklists FOREIGN KEY (parentChecklistId) REFERENCES Checklists (id)
  )
 ENGINE = InnoDB
