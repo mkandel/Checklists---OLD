@@ -4,22 +4,22 @@
 
 package mkandel.entities;
 
+import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.utils.UserType;
 import mkandel.utils.Builder;
-import mkandel.utils.RandomString;
-import mkandel.utils.UserTypes;
 
-import static mkandel.utils.UserTypes.USER;
+import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
+import static com.mkandel.checklists.utils.UserType.USER;
 
 public class UserBuilder implements Builder<User> {
 
-    private RandomString randomString = new RandomString();
 
-    private String username = randomString.nextString();
-    private String password = randomString.nextString();
-    private String fName = randomString.nextString();
-    private String lName = randomString.nextString();
-    private String email = randomString.nextString();
-    private UserTypes type = USER;
+    private String username = generateRandomString();
+    private String password = generateRandomString();
+    private String fName = generateRandomString();
+    private String lName = generateRandomString();
+    private String email = generateRandomString();
+    private UserType type = USER;
     private Boolean active = true;
 
     @Override
