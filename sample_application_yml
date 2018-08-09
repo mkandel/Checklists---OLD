@@ -1,0 +1,147 @@
+# customize /info endpoint -- placeholders will be populated by Gradle at build time
+info:
+  app:
+    name: ${name}
+    description: ${description}
+    version: ${version}
+
+endpoints:
+  shutdown:
+    enabled: true
+
+# disable security for actuator endpoints
+# TODO: Undo this in production or consider changing the management port so it's protected behind the firewall
+management:
+  security:
+    enabled: false
+
+spring:
+  main:
+    banner-mode: console
+  jackson:
+    default-property-inclusion: non_empty
+    serialization:
+      indent_output: true
+      write_dates_as_timestamps: false
+  http:
+    multipart:
+      maxFileSize: 10Mb
+      maxRequestSize: 15Mb
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=elm_redirector
+    username: sa
+    password: Im@Str0ngP@ssword
+    # Warning - update CustomRoutingDataSource if any new tomcat properties are added!
+    tomcat:
+      # Validate the connection before borrowing it from the pool.
+      test-on-borrow: true
+      # The SQL query that will be used to validate connections.
+      validation-query: SELECT 1
+      # Number of ms to wait before throwing an exception if no connection is available.
+      max-wait: 10000
+      # Maximum number of active connections that can be allocated from this pool at the same time.
+      max-active: 50
+      # Properties to set on the DB connection, delimited by semicolons
+      connection-properties: sendStringParametersAsUnicode=false
+  jpa:
+    show-sql: true
+    hibernate:
+      # Warning! The `naming-strategy` property has been deprecated as of Hibernate 5.1 and replaced with what's below
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      # options are: none, validate, update, create, create-drop
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2008Dialect
+
+server:
+  port: 8080
+  use-forward-headers: true
+
+# settings to use when running migrations against the redirector database
+flyway:
+  enabled: true
+  table: SchemaVersion
+  locations: classpath:db/migration/redirector
+  ignoreFutureMigrations: false
+
+# settings to use when running migrations on target (non-redirector) databases
+flywayTargetDatabase:
+  table: SchemaVersion
+  locations: classpath:db/migration/target
+  cleanOnValidationError: false
+  ignoreFutureMigrations: false
+
+logging:
+  level:
+    com:
+      echoman: DEBUG
+    org:
+      springframework:
+        jdbc: DEBUG
+  # inject custom MDC values before the 'level' attribute in the log message (suggested in Spring Boot docs)
+  # the trace-id is a looong UUID -- just use the last 5 characters for console output
+  pattern:
+    level: "%-5.5X{trace-id:------} %X{message-code:-----} %5p"
+
+zuul:
+  routes:
+    birch:
+      path: /birch/**
+      url: http://localhost:8081/
+      sensitiveHeaders:
+  host:
+    socketTimeoutMillis: 30000
+
+app:
+  passwordResetUrl:
+
+##############################
+# PROFILE SPECIFIC OVERRIDES #
+##############################
+---
+spring:
+  profiles: test
+
+flyway:
+  cleanOnValidationError: true
+
+flywayTargetDatabase:
+  cleanOnValidationError: true
+
+# the tenant properties to use when running integration tests
+test:
+  targetDatabaseUrl: jdbc:sqlserver://localhost:1433;databaseName=elm_target
+  targetDatabaseUsername: sa
+  targetDatabasePassword: Im@Str0ngP@ssword
+  activeDirectoryUrl: ldap://nhcwad01:389
+  activeDirectoryDomain: echoman.com
+  activeDirectoryRootDn: dc=echoman,dc=local
+  activeDirectorySearchFilter: (&(objectClass=user)(userPrincipalName={0}))
+  ssrsDbPort: 1433
+  ssrsDbServer: nhcwsql2016
+  ssrsServer: nhcwsql2016
+  ssrsWsdl: http://nhcwsql2016/ReportServer/ReportService2010.asmx?wsdl
+  ssrsViewer: http://nhcwsql2016/ReportServer/Pages/ReportViewer.aspx
+  ssrsDomain: echoman.local
+  ssrsRootFolder: /VantageIntegrationTest
+  ssrsUsername: pj/fmIlGCK9hajNIBL4spw==
+  ssrsPassword: t4OkSXu5HES3WNuFP+B/ow==
+  cmisUrl: http://dev.alfresco.echoman.local:8100/alfresco/api/-default-/public/cmis/versions/1.1/atom
+  cmisUser: admin
+  cmisPassword: admin
+  cmisRepositoryId: -default-
+  cmisTargetFolder: /echoVantageIntegrationTests
+
+app:
+  passwordResetUrl: http://www.test.com
+
+---
+spring:
+  profiles: unsecure
+
+security:
+  basic:
+    enabled: false
+
