@@ -24,7 +24,7 @@ public class UserControllerUnitTest extends BaseUnitTest {
     UserRepository userRepository;
 
     @InjectMocks
-    private UserController userController = new UserController(userRepository);
+    private UserController userController = new UserController();
 //    com.mkandel.checklists.utils.RandomGenerator generator = new com.mkandel.checklists.utils.RandomGenerator();
 
     @Test

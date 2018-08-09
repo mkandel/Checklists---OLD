@@ -8,6 +8,8 @@ import com.mkandel.checklists.BaseUnitTest;
 import com.mkandel.checklists.utils.ErrorMessageConstants;
 import com.mkandel.checklists.utils.InvalidEmailException;
 import java.util.UUID;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.junit.Test;
 
 import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
@@ -15,9 +17,10 @@ import static com.mkandel.checklists.utils.RandomGenerator.generateRandomUUID;
 import static com.mkandel.checklists.utils.UserType.ADMIN;
 import static com.mkandel.checklists.utils.UserType.CREATOR;
 import static com.mkandel.checklists.utils.UserType.USER;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
 
 public class UserUnitTest extends BaseUnitTest {
 
@@ -57,21 +60,16 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetEmail() {
-        String email = generateRandomString();
+        StringProperty email = new SimpleStringProperty();
+        email.set(generateRandomString());
         System.out.println("email: " + email);
-        try {
-            user.setEmail(email);
-        } catch (InvalidEmailException ex){
-            String expected = ErrorMessageConstants.INVALID_EMAIL;
-            assertThat(ex.getMessage(), is(equalTo(expected)));
-        }
-        email = "some.fake@email.com";
-        try {
-            user.setEmail(email);
-        } catch (InvalidEmailException ex){
-
-        }
-        assertThat(email, equalTo(user.getEmail()));
+        assertThatExceptionOfType(InvalidEmailException.class)
+                .isThrownBy(() -> user.setEmail(email.getValue()))
+                .withMessageMatching(ErrorMessageConstants.INVALID_EMAIL);
+        email.set("some.fake@email.com");
+        assertThatCode(() -> user.setEmail(email.getValue()))
+                .doesNotThrowAnyException();
+        assertThat(email.getValue(), equalTo(user.getEmail()));
     }
 
     @Test
