@@ -11,6 +11,7 @@ import com.mkandel.checklists.utils.InvalidEmailException;
 import com.mkandel.checklists.utils.Routes;
 import com.mkandel.checklists.utils.UserType;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +49,7 @@ public class UserController {
     }
 
     @GetMapping(Routes.USER)
-    public User user(@PathVariable String username) throws Exception {
+    public Optional<User> user(@PathVariable String username) throws Exception {
         return userRepository.findByUsername(username);
     }
 

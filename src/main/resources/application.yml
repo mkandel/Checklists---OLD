@@ -1,3 +1,7 @@
+#
+# Copyright (c) 2018. Marc Kandel
+#
+
 # placeholders will be populated by Gradle at build time
 #info:
 #  app:
@@ -7,15 +11,31 @@
 server:
   port: 8080
 
-
+#  logging.level.org.hibernate.stat=debug
+#  logging.level.org.hibernate.type=trace
 spring:
   #profiles:
   #  active: development
+  jpa:
+    show-sql: false
+    properties:
+      generate_statistics: false
+      hibernate:
+        SQL: debug
+  jackson:
+    serialization:
+      indent_output: true
   flyway:
     enabled: true
+    core:
+      internal:
+        command:
+          DbMigrate: DEBUG
     check-location: false
     locations: classpath:db/migration
     sqlMigrationPrefix: V
     repeatableSqlMigrationPrefix: R
+    ignore-future-migrations: false
+    ignore-missing-migrations: false
     table: FlywayMigrationHistory
     baselineOnMigrate: true

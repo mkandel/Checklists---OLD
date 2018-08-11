@@ -10,6 +10,7 @@ import com.mkandel.checklists.outbound.repositories.UserRepository;
 import com.mkandel.checklists.utils.UserBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -46,10 +47,10 @@ public class UserControllerUnitTest extends BaseUnitTest {
         String username = "admin";
         User user = new UserBuilder().withUsername(username).build();
 
-        when(userRepository.findByUsername(username)).thenReturn(user);
+        when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
 
-        User actual = userController.user(username);
+        Optional<User> actual = userController.user(username);
 
-        assertThat(username, equalTo(actual.getUsername()));
+        assertThat(username, equalTo(actual.get().getUsername()));
     }
 }

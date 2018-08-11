@@ -12,12 +12,12 @@ import static com.mkandel.checklists.utils.UserType.USER;
 
 public class UserBuilder implements Builder<User> {
 
-
+    private String id = null;
     private String username = generateRandomString();
     private String password = generateRandomString();
     private String fName = generateRandomString();
     private String lName = generateRandomString();
-    private String email = generateRandomString();
+    private String email = generateRandomString() + "@email.org";
     private UserType type = USER;
     private Boolean active = true;
 
@@ -25,9 +25,23 @@ public class UserBuilder implements Builder<User> {
     public User build() {
         User user = new User();
         user.setUsername(username);
+        user.setPassword(password);
+        user.setFname(fName);
+        user.setLname(lName);
+        user.setEmail(email);
+        user.setActive(active);
         user.setType(type);
 
         return user;
+    }
+
+    public UserBuilder withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public UserBuilder withid() {
+        return this.withId(generateRandomString());
     }
 
     public UserBuilder withUsername(String username) {

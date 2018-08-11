@@ -5,13 +5,12 @@
 package com.mkandel.checklists.utils;
 
 import com.mkandel.checklists.entities.User;
-import java.util.UUID;
 
-import static com.mkandel.checklists.utils.RandomGenerator.generateRandomUUID;
+import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
 
 public class UserBuilder implements Builder {
 
-    private UUID id;
+    private String id;
     private String username;
     private String Fname;
     private String Lname;
@@ -28,13 +27,13 @@ public class UserBuilder implements Builder {
         return user;
     }
 
-    public UserBuilder withId(UUID id){
+    public UserBuilder withId(String id){
         this.id = id;
         return this;
     }
 
     public UserBuilder withiRandomId(){
-        this.id = generateRandomUUID();
+        this.id = generateRandomString();
         return this;
     }
 

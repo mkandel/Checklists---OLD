@@ -6,7 +6,7 @@ BEFORE INSERT ON `checklists`.`Users`
 FOR EACH ROW
 BEGIN
   IF new.id IS NULL THEN
-    SET new.id = uuid();
+    SET new.id = UUID();
   END IF;
 END;
 |

@@ -4,7 +4,7 @@
 
 DROP TABLE IF EXISTS `checklists`.`Checklists`;
 CREATE TABLE `checklists`.`Checklists` (
-  `id` VARCHAR(36) NOT NULL DEFAULT 'uuid()',
+  `id` VARCHAR(36) NOT NULL,
   -- Checklist title will come from the template
   `templateId` VARCHAR(36) NOT NULL,
   `active` TINYINT(4) NOT NULL DEFAULT '1',

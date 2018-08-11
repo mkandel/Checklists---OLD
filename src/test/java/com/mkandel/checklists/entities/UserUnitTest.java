@@ -7,13 +7,11 @@ package com.mkandel.checklists.entities;
 import com.mkandel.checklists.BaseUnitTest;
 import com.mkandel.checklists.utils.ErrorMessageConstants;
 import com.mkandel.checklists.utils.InvalidEmailException;
-import java.util.UUID;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.junit.Test;
 
 import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
-import static com.mkandel.checklists.utils.RandomGenerator.generateRandomUUID;
 import static com.mkandel.checklists.utils.UserType.ADMIN;
 import static com.mkandel.checklists.utils.UserType.CREATOR;
 import static com.mkandel.checklists.utils.UserType.USER;
@@ -28,7 +26,7 @@ public class UserUnitTest extends BaseUnitTest {
 
     @Test
     public void getAndSetId() {
-        UUID uuid = generateRandomUUID();
+        String uuid = generateRandomString();
         System.out.println("uuid: " + uuid);
         user.setId(uuid);
         assertThat(uuid, equalTo(user.getId()));

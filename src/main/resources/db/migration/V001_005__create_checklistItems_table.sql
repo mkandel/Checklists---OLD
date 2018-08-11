@@ -4,7 +4,7 @@
 
 DROP TABLE IF EXISTS `checklists`.`ChecklistItems`;
 CREATE TABLE `checklists`.`ChecklistItems` (
-  `id` VARCHAR(36) NOT NULL DEFAULT 'uuid()',
+  `id` VARCHAR(36) NOT NULL,
   `parentChecklistId` VARCHAR(36) NOT NULL,
   `itemText` VARCHAR(55) NOT NULL,
   `completed` TINYINT(4) NOT NULL DEFAULT '0',

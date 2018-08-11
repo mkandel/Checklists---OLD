@@ -4,6 +4,7 @@
 
 package com.mkandel.checklists.outbound;
 
+import com.zaxxer.hikari.HikariDataSource;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.flywaydb.core.Flyway;
@@ -11,7 +12,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 //@Component
 @Configuration
@@ -35,11 +35,16 @@ public class DbAdapter {
 
     @Bean
     public DataSource dataSource(){
-        DriverManagerDataSource datasource = new DriverManagerDataSource();
+//        DriverManagerDataSource datasource = new DriverManagerDataSource();
+        HikariDataSource datasource = new HikariDataSource();
         datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://127.0.0.1:3306/checklists" +
+        datasource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/checklists" +
                 "?autoReconnect=true" +
                 "&useSSL=false" +
+//                "&cachePrepStmts=true" +
+//                "&prepStmtCacheSize=250" +
+//                "prepStmtCacheSqlLimit=2048" +
+//                "useServerPrepStmts=true" +
                 "&serverTimezone=UTC");
         datasource.setUsername( "sa" );
         datasource.setPassword( "sa" );
