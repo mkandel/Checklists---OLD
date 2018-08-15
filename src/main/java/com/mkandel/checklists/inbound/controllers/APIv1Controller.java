@@ -2,7 +2,7 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package com.mkandel.checklists.controllers;
+package com.mkandel.checklists.inbound.controllers;
 
 import com.mkandel.checklists.utils.EmailValidator;
 import com.mkandel.checklists.utils.Routes;

@@ -6,7 +6,7 @@ package com.mkandel.checklists.outbound.repositories;
 
 import com.mkandel.checklists.BaseIntegrationTest;
 import com.mkandel.checklists.entities.User;
-import com.mkandel.checklists.entities.UserBuilder;
+import com.mkandel.checklists.entities.builders.UserBuilder;
 import java.util.Optional;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

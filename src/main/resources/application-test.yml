@@ -8,33 +8,14 @@
 #    name: ${name}
 #    description: ${description}
 #    version: ${version}
-#
-
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        stat: debug
-#        type: trace
-
 server:
   port: 8080
 
+#  logging.level.org.hibernate.stat=debug
+#  logging.level.org.hibernate.type=trace
 spring:
   profiles:
-    active: dev
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/checklists
-    username: sa
-    password: sa
-  #      data-source-properties:
-  #        auto-reconnect: true
-  #        use-ssl: false
-  #        prep-stmt-cache-size: 250
-  #        prep-stmt-cache-sql-limit: 2048
-  #        use-server-prep-stmts: true
+    active: test
   jpa:
     show-sql: false
     properties:

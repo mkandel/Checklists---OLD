@@ -5,11 +5,12 @@
 package com.mkandel.checklists.utils;
 
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.text.RandomStringGenerator;
 
 public class RandomGenerator {
 
-    public static String generateRandomString(int length) {
+    public static String randomString(int length) {
         RandomStringGenerator randomStringGenerator = new RandomStringGenerator.Builder()
                 .withinRange('A', 'z')
                 .filteredBy(Character::isLetter)
@@ -18,12 +19,34 @@ public class RandomGenerator {
         return randomStringGenerator.generate(length);
     }
 
-    public static String generateRandomString(){
-        return generateRandomString(8);
+    public static String randomString(){
+        return randomString(8);
     }
 
-    public static UUID generateRandomUUID(){
+    public static UUID randomUUID(){
         return UUID.randomUUID();
+    }
+
+    public static String randomUUIDString(){
+        return randomUUID().toString();
+    }
+
+    public static int randomInteger(int floor, int ceiling) {
+        assert floor <= ceiling : "floor must be less than ceiling!";
+        return floor + ThreadLocalRandom.current().nextInt(ceiling - floor + 1);
+    }
+
+    public static int randomInteger(int ceiling) {
+        return randomInteger(0, ceiling);
+    }
+
+    public static boolean randomBoolean() {
+        return ThreadLocalRandom.current().nextBoolean();
+    }
+
+    public static <T> T randomEnum(Class<T> enumType) {
+        final T[] values = enumType.getEnumConstants();
+        return values[randomInteger(values.length - 1)];
     }
 }
 

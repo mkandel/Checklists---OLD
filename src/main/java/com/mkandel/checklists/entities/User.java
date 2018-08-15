@@ -4,8 +4,6 @@
 
 package com.mkandel.checklists.entities;
 
-import com.mkandel.checklists.utils.EmailValidator;
-import com.mkandel.checklists.utils.InvalidEmailException;
 import com.mkandel.checklists.utils.UserType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
-
-import static com.mkandel.checklists.utils.ErrorMessageConstants.INVALID_EMAIL;
 
 @Entity
 @Table(name = "Users")
@@ -76,11 +72,11 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) throws InvalidEmailException {
-        EmailValidator emailValidator = new EmailValidator();
-        if (!emailValidator.validateEmail(email)){
-            throw new InvalidEmailException(INVALID_EMAIL);
-        }
+    public void setEmail(String email) /*throws InvalidEmailException*/ {
+//        EmailValidator emailValidator = new EmailValidator();
+//        if (!emailValidator.validateEmail(email)){
+//            throw new InvalidEmailException(INVALID_EMAIL);
+//        }
         this.email = email;
     }
 

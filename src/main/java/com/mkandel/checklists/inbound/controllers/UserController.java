@@ -2,9 +2,11 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package com.mkandel.checklists.controllers;
+package com.mkandel.checklists.inbound.controllers;
 
 import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.inbound.converters.UserConverter;
+import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.outbound.DbAdapter;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
 import com.mkandel.checklists.utils.InvalidEmailException;
@@ -25,6 +27,8 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    UserConverter userConverter = new UserConverter();
+
     public UserController() {
         try {
             this.dbAdapter = new DbAdapter();
@@ -41,19 +45,20 @@ public class UserController {
      *
      * @TODO: Permissions, restrict users to only see what they have access to
      */
-    @GetMapping(Routes.USERS)
-    public List<User> users() throws Exception {
+    @GetMapping(value = Routes.USERS, produces = UserDto.JSON_MIME_TYPE)
+    public List<UserDto> users() throws Exception {
 //        List<User> users = dbAdapter.getUsers();
 //        return users;
-        return userRepository.findAll();
+        return userConverter.toUserDto(userRepository.findAll());
     }
 
-    @GetMapping(Routes.USER)
-    public Optional<User> user(@PathVariable String username) throws Exception {
-        return userRepository.findByUsername(username);
+    @GetMapping(value = Routes.USER, produces = UserDto.JSON_MIME_TYPE)
+    public Optional<UserDto> user(@PathVariable String username) throws Exception {
+        Optional<User> optionalUser = userRepository.findByUsername(username);
+        return Optional.of(userConverter.toUserDto(optionalUser.get()));
     }
 
-    @PutMapping(Routes.ADD_USER)
+    @PutMapping(value = Routes.ADD_USER, consumes = UserDto.JSON_MIME_TYPE, produces = UserDto.JSON_MIME_TYPE)
     public User addUser(@PathVariable String Fname,
                         @PathVariable String Lname,
                         @PathVariable String username,

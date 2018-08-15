@@ -6,8 +6,12 @@ package com.mkandel.checklists.controllers;
 
 import com.mkandel.checklists.BaseUnitTest;
 import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.entities.builders.UserBuilder;
+import com.mkandel.checklists.entities.builders.UserDtoBuilder;
+import com.mkandel.checklists.inbound.controllers.UserController;
+import com.mkandel.checklists.inbound.converters.UserConverter;
+import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
-import com.mkandel.checklists.utils.UserBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +30,8 @@ public class UserControllerUnitTest extends BaseUnitTest {
 
     @InjectMocks
     private UserController userController = new UserController();
-//    com.mkandel.checklists.utils.RandomGenerator generator = new com.mkandel.checklists.utils.RandomGenerator();
+
+    UserConverter userConverter = new UserConverter();
 
     @Test
     public void testUsersEndpoint() throws Exception {
@@ -34,7 +39,7 @@ public class UserControllerUnitTest extends BaseUnitTest {
         List<User> users = new ArrayList<>();
         users.add(user);
         when(userRepository.findAll()).thenReturn(users);
-        List<User> actual = userController.users();
+        List<UserDto> actual = userController.users();
         assert actual.size() == users.size();
         users.add(user);
         actual = userController.users();
@@ -45,11 +50,12 @@ public class UserControllerUnitTest extends BaseUnitTest {
     @Test
     public void testUserEndpoint() throws Exception {
         String username = "admin";
+        UserDto userDto = new UserDtoBuilder().withUsername(username).build();
         User user = new UserBuilder().withUsername(username).build();
 
         when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
 
-        Optional<User> actual = userController.user(username);
+        Optional<UserDto> actual = userController.user(username);
 
         assertThat(username, equalTo(actual.get().getUsername()));
     }

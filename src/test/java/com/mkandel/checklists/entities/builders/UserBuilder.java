@@ -2,24 +2,27 @@
  * Copyright (c) 2018. Marc Kandel
  */
 
-package com.mkandel.checklists.entities;
+package com.mkandel.checklists.entities.builders;
 
+import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.utils.Builder;
 import com.mkandel.checklists.utils.UserType;
 
-import static com.mkandel.checklists.utils.RandomGenerator.generateRandomString;
-import static com.mkandel.checklists.utils.UserType.USER;
+import static com.mkandel.checklists.utils.RandomGenerator.randomBoolean;
+import static com.mkandel.checklists.utils.RandomGenerator.randomEnum;
+import static com.mkandel.checklists.utils.RandomGenerator.randomString;
+import static com.mkandel.checklists.utils.RandomGenerator.randomUUIDString;
 
 public class UserBuilder implements Builder<User> {
 
-    private String id = null;
-    private String username = generateRandomString();
-    private String password = generateRandomString();
-    private String fName = generateRandomString();
-    private String lName = generateRandomString();
-    private String email = generateRandomString() + "@email.org";
-    private UserType type = USER;
-    private Boolean active = true;
+    private String id = randomUUIDString();
+    private String username = randomString();
+    private String password = randomString();
+    private String fName = randomString();
+    private String lName = randomString();
+    private String email = randomString() + "@email.org";
+    private UserType type = randomEnum(UserType.class);
+    private Boolean active = randomBoolean();
 
     @Override
     public User build() {
@@ -41,7 +44,7 @@ public class UserBuilder implements Builder<User> {
     }
 
     public UserBuilder withid() {
-        return this.withId(generateRandomString());
+        return this.withId(randomString());
     }
 
     public UserBuilder withUsername(String username) {
