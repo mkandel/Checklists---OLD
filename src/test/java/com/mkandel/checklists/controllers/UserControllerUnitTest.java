@@ -55,8 +55,8 @@ public class UserControllerUnitTest extends BaseUnitTest {
 
         when(userRepository.findByUsername(username)).thenReturn(Optional.of(user));
 
-        Optional<UserDto> actual = userController.user(username);
+        UserDto actual = userController.user(username);
 
-        assertThat(username, equalTo(actual.get().getUsername()));
+        assertThat(username, equalTo(actual.getUsername()));
     }
 }

@@ -5,11 +5,10 @@
 package com.mkandel.checklists.inbound.controllers;
 
 import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.exceptions.UserNotFoundException;
 import com.mkandel.checklists.inbound.converters.UserConverter;
 import com.mkandel.checklists.inbound.dtos.UserDto;
-import com.mkandel.checklists.outbound.DbAdapter;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
-import com.mkandel.checklists.utils.InvalidEmailException;
 import com.mkandel.checklists.utils.Routes;
 import com.mkandel.checklists.utils.UserType;
 import java.util.List;
@@ -20,51 +19,47 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.mkandel.checklists.inbound.converters.UserConverter.toUserDto;
+import static java.util.stream.Collectors.toList;
+
 @RestController
 public class UserController {
-    DbAdapter dbAdapter;
 
     @Autowired
     UserRepository userRepository;
 
-    UserConverter userConverter = new UserConverter();
+    private UserConverter userConverter = new UserConverter();
 
-    public UserController() {
-        try {
-            this.dbAdapter = new DbAdapter();
-        } catch (Exception ex) {
-            // TODO: do something better with this exception ...
-            System.out.println("*** GRRRRRRRR ***");
-            throw ex;
-        }
+    @GetMapping(value = Routes.USERNAMES)
+    public List<String> usernames() {
+        return userRepository.findAll()
+                .stream()
+                .map(User::getUsername)
+                .collect(toList());
     }
 
-    /**
-     *  /api/v1/users endpoint:
-     *          @Returns: List of all users in the system
-     *
-     * @TODO: Permissions, restrict users to only see what they have access to
-     */
     @GetMapping(value = Routes.USERS, produces = UserDto.JSON_MIME_TYPE)
     public List<UserDto> users() throws Exception {
-//        List<User> users = dbAdapter.getUsers();
-//        return users;
-        return userConverter.toUserDto(userRepository.findAll());
+        return toUserDto(userRepository.findAll());
     }
 
     @GetMapping(value = Routes.USER, produces = UserDto.JSON_MIME_TYPE)
-    public Optional<UserDto> user(@PathVariable String username) throws Exception {
+    public UserDto user(@PathVariable String username) throws UserNotFoundException {
         Optional<User> optionalUser = userRepository.findByUsername(username);
-        return Optional.of(userConverter.toUserDto(optionalUser.get()));
+        if (optionalUser.isPresent()) {
+            return toUserDto(optionalUser.get());
+        } else {
+            throw new UserNotFoundException("No such user : '" +username + "'");
+        }
     }
 
     @PutMapping(value = Routes.ADD_USER, consumes = UserDto.JSON_MIME_TYPE, produces = UserDto.JSON_MIME_TYPE)
-    public User addUser(@PathVariable String Fname,
+    public UserDto addUser(@PathVariable String Fname,
                         @PathVariable String Lname,
                         @PathVariable String username,
                         @PathVariable String email,
                         @PathVariable String type
-    ) throws InvalidEmailException {
+    ) {
         User user = new User();
         user.setFname(Fname);
         user.setLname(Lname);
@@ -81,8 +76,6 @@ public class UserController {
         }
         user.setType(actualType);
         user.setActive(true);
-        // TODO: save() user which should update id with DB assigned id
-//        user.setId(java.util.UUID.randomUUID());
-        return user;
+        return toUserDto(userRepository.save(user));
     }
 }

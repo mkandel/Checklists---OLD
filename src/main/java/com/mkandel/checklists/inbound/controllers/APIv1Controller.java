@@ -17,13 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class APIv1Controller {
 
-    /**
-     *  /api/v1/users endpoint:
-     *          @Returns: List of all users in the system
-     *
-     *  @TODO: Permissions, restrict users to only see what they have access to
-     *
-     */
     @RequestMapping(Routes.BASE)
     public String apiRoot(){
         return "Welcome to the API version 1!";
@@ -47,10 +40,8 @@ public class APIv1Controller {
         Map<String, String> ret = new HashMap<>();
         ret.put("email", email);
         if (emailValidator.validateEmail(email)){
-//            System.out.println("* Email validated: " + email);
             ret.put("status", "ok");
         } else {
-//            System.out.println("* Email NOT validated: " + email);
             ret.put("status", "invalid");
         }
         return ret;

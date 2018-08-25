@@ -2,39 +2,45 @@
 # Copyright (c) 2018. Marc Kandel
 #
 
-# placeholders will be populated by Gradle at build time
-#info:
-#  app:
-#    name: ${name}
-#    description: ${description}
-#    version: ${version}
-#
-
+info:
+  app:
+    name: "Checklists"
+    description: "Online shared checkists"
+    version: "1.0.0"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#  security:
+#    enabled: false
 #logging:
 #  level:
 #    org:
 #      hibernate:
 #        stat: debug
 #        type: trace
-
 server:
   port: 8080
 
+security:
+  basic:
+    enabled: true
+  user:
+    name: "admin"
+    password: "admin"
+
 spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   profiles:
     active: dev
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/checklists
-    username: sa
-    password: sa
-  #      data-source-properties:
-  #        auto-reconnect: true
-  #        use-ssl: false
-  #        prep-stmt-cache-size: 250
-  #        prep-stmt-cache-sql-limit: 2048
-  #        use-server-prep-stmts: true
+      url: "jdbc:mysql://127.0.0.1:3306/checklists?autoReconnect=true&useSSL=false&cachePrepStmts=true&prepStmtCacheSize=250&prepStmtCacheSqlLimit=2048&useServerPrepStmts=true&serverTimezone=UTC"
+      username: "sa"
+      password: "sa"
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      platform: mysql
   jpa:
     show-sql: false
     properties:
