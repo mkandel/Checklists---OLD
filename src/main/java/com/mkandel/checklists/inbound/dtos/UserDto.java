@@ -17,7 +17,7 @@ public class UserDto {
     private boolean active;
     private UserType type;
 
-    public final static String JSON_MIME_TYPE = "application/json;type=checklists-user;version=1.0.0";
+    public static final String JSON_MIME_TYPE = "application/json;type=checklists-user;version=1.0.0";
     public static final MediaType JSON_MEDIA_TYPE = MediaType.parseMediaType( JSON_MIME_TYPE );
 
     public UserDto() {

@@ -34,7 +34,7 @@ public class UserControllerUnitTest extends BaseUnitTest {
     UserConverter userConverter = new UserConverter();
 
     @Test
-    public void testUsersEndpoint() throws Exception {
+    public void testUsersEndpoint() {
         User user = new UserBuilder().build();
         List<User> users = new ArrayList<>();
         users.add(user);

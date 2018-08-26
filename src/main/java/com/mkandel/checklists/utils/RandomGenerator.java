@@ -11,7 +11,7 @@ import org.apache.commons.text.RandomStringGenerator;
 public class RandomGenerator {
 
     public static String randomString(int length) {
-        RandomStringGenerator randomStringGenerator = new RandomStringGenerator.Builder()
+        final RandomStringGenerator randomStringGenerator = new RandomStringGenerator.Builder()
                 .withinRange('A', 'z')
                 .filteredBy(Character::isLetter)
                 .build();
@@ -19,15 +19,15 @@ public class RandomGenerator {
         return randomStringGenerator.generate(length);
     }
 
-    public static String randomString(){
+    public static String randomString() {
         return randomString(8);
     }
 
-    public static UUID randomUUID(){
+    public static UUID randomUUID() {
         return UUID.randomUUID();
     }
 
-    public static String randomUUIDString(){
+    public static String randomUUIDString() {
         return randomUUID().toString();
     }
 

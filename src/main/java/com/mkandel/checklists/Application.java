@@ -33,7 +33,7 @@ public class Application {
 
     private void runFlyway(DataSource datasource) {
         // Create the Flyway instance
-        Flyway flyway = new Flyway();
+        final Flyway flyway = new Flyway();
         flyway.setDataSource(datasource);
         flyway.migrate();
     }

@@ -21,7 +21,6 @@ public class ChecklistTemplateItem {
     private UUID parentId;
     private String itemText;
 
-
     public ChecklistTemplateItem() {
     }
 

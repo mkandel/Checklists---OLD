@@ -18,28 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
 public class APIv1Controller {
 
     @RequestMapping(Routes.BASE)
-    public String apiRoot(){
+    public String apiRoot() {
         return "Welcome to the API version 1!";
     }
 
     @RequestMapping(Routes.HEALTH)
-    public HashMap<String, String> health(){
-        HashMap ret = new HashMap<String, String>();
+    public HashMap<String, String> health() {
+        final HashMap ret = new HashMap<String, String>();
         ret.put("status", "ok");
         return ret;
     }
 
     @RequestMapping(Routes.TEAPOT)
-    public HttpStatus teapot(){
+    public HttpStatus teapot() {
         return HttpStatus.I_AM_A_TEAPOT;
     }
 
     @GetMapping(Routes.VALIDADTE_EMAIL)
-    public Map<String, String> validateEmail(@PathVariable String email){
-        EmailValidator emailValidator = new EmailValidator();
-        Map<String, String> ret = new HashMap<>();
+    public Map<String, String> validateEmail(@PathVariable String email) {
+        final EmailValidator emailValidator = new EmailValidator();
+        final Map<String, String> ret = new HashMap<>();
         ret.put("email", email);
-        if (emailValidator.validateEmail(email)){
+        if (emailValidator.validateEmail(email)) {
             ret.put("status", "ok");
         } else {
             ret.put("status", "invalid");
@@ -48,8 +48,7 @@ public class APIv1Controller {
     }
 
     @GetMapping(Routes.USER_TYPES)
-    public Map<String, String> listTypes(){
-        Map<String, String> ret = new HashMap<>();
-        return ret;
+    public Map<String, String> listTypes() {
+        return new HashMap<>();
     }
 }

@@ -26,7 +26,7 @@ public class UserUnitTest extends BaseUnitTest {
             .collect(toList());
 
     @Test
-    public void testOne() throws Exception {
+    public void testOne() {
         assertThat(users).isNotNull();
         assertThat(users).hasSize(size);
     }

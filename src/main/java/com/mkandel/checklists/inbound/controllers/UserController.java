@@ -6,7 +6,6 @@ package com.mkandel.checklists.inbound.controllers;
 
 import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.exceptions.UserNotFoundException;
-import com.mkandel.checklists.inbound.converters.UserConverter;
 import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
 import com.mkandel.checklists.utils.Routes;
@@ -31,8 +30,6 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    private UserConverter userConverter = new UserConverter();
-
     @GetMapping(value = Routes.USERNAMES)
     public List<String> usernames() {
         return userRepository.findAll()
@@ -42,17 +39,17 @@ public class UserController {
     }
 
     @GetMapping(value = Routes.USERS, produces = UserDto.JSON_MIME_TYPE)
-    public List<UserDto> users() throws Exception {
+    public List<UserDto> users() {
         return toUserDto(userRepository.findAll());
     }
 
     @GetMapping(value = Routes.USER, produces = UserDto.JSON_MIME_TYPE)
     public UserDto user(@PathVariable String username) throws UserNotFoundException {
-        Optional<User> optionalUser = userRepository.findByUsername(username);
+        final Optional<User> optionalUser = userRepository.findByUsername(username);
         if (optionalUser.isPresent()) {
             return toUserDto(optionalUser.get());
         } else {
-            throw new UserNotFoundException("No such user : '" +username + "'");
+            throw new UserNotFoundException("No such user : '" + username + "'");
         }
     }
 

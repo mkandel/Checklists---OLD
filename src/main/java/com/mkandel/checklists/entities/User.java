@@ -48,16 +48,16 @@ public class User {
         return fname;
     }
 
-    public void setFname(String Fname) {
-        this.fname = Fname;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
     public String getLname() {
         return lname;
     }
 
-    public void setLname(String Lname) {
-        this.lname = Lname;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getUsername() {
@@ -73,10 +73,10 @@ public class User {
     }
 
     public void setEmail(String email) /*throws InvalidEmailException*/ {
-//        EmailValidator emailValidator = new EmailValidator();
-//        if (!emailValidator.validateEmail(email)){
-//            throw new InvalidEmailException(INVALID_EMAIL);
-//        }
+        //EmailValidator emailValidator = new EmailValidator();
+        //if (!emailValidator.validateEmail(email)){
+        //    throw new InvalidEmailException(INVALID_EMAIL);
+        //}
         this.email = email;
     }
 
