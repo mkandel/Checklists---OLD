@@ -72,9 +72,9 @@ public class User {
         return email;
     }
 
+    // TODO: Re-enable this exception when it makes sense
     public void setEmail(String email) /*throws InvalidEmailException*/ {
-        //EmailValidator emailValidator = new EmailValidator();
-        //if (!emailValidator.validateEmail(email)){
+        //if (!validateEmail(email)){
         //    throw new InvalidEmailException(INVALID_EMAIL);
         //}
         this.email = email;

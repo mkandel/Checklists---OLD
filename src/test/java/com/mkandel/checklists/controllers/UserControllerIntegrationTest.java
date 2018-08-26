@@ -5,34 +5,34 @@
 package com.mkandel.checklists.controllers;
 
 import com.mkandel.checklists.BaseIntegrationTest;
+import com.mkandel.checklists.entities.User;
+import com.mkandel.checklists.entities.builders.UserBuilder;
 import com.mkandel.checklists.inbound.controllers.UserController;
-import com.mkandel.checklists.inbound.converters.UserConverter;
+import com.mkandel.checklists.inbound.dtos.UserDto;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import static com.mkandel.checklists.inbound.converters.UserConverter.toUserDto;
 
 public class UserControllerIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     UserController userController;
 
-    UserConverter userConverter = new UserConverter();
+    @Ignore
+    @Test
+    public void user_validUser_returnsCorrectUser() throws Exception {
+        UserDto expected = toUserDto(userRepository.save(new UserBuilder().build()));
 
-//    @Test
-//    public void user_validUser_returnsCorrectUser() throws Exception {
-//        User user = userRepository.save(new UserBuilder().build());
-//
-//        Optional<User> optionalUser = userConverter.toUser(userController.user(user.getUsername()));
-//        assertThat(optionalUser).isPresent();
-//        assertThat(optionalUser.get()).isEqualToComparingFieldByField(user);
-//
-//        userRepository.deleteById(user.getId());
-//    }
+        userRepository.deleteById(expected.getId());
+    }
 
-//    @Test
-//    public void userEndpoint_validUser_returnsCorrectUser() throws Exception {
-//        User user = userRepository.save(new UserBuilder().build());
-//
-//        HttpResponse response =
-//
-//        userRepository.deleteById(user.getId());
-//    }
+    @Ignore
+    @Test
+    public void userEndpoint_validUser_returnsCorrectUser() throws Exception {
+        User user = userRepository.save(new UserBuilder().build());
+
+        userRepository.deleteById(user.getId());
+    }
 }

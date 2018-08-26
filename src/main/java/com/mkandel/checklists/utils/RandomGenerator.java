@@ -48,5 +48,9 @@ public class RandomGenerator {
         final T[] values = enumType.getEnumConstants();
         return values[randomInteger(values.length - 1)];
     }
+
+    public static String randomEmail() {
+        return randomString() + "@" + randomString() + "." + randomString(3);
+    }
 }
 

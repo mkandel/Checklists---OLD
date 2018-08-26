@@ -9,6 +9,7 @@ import com.mkandel.checklists.utils.Builder;
 import com.mkandel.checklists.utils.UserType;
 
 import static com.mkandel.checklists.utils.RandomGenerator.randomBoolean;
+import static com.mkandel.checklists.utils.RandomGenerator.randomEmail;
 import static com.mkandel.checklists.utils.RandomGenerator.randomEnum;
 import static com.mkandel.checklists.utils.RandomGenerator.randomString;
 import static com.mkandel.checklists.utils.RandomGenerator.randomUUIDString;
@@ -18,9 +19,9 @@ public class UserBuilder implements Builder<User> {
     private String id = randomUUIDString();
     private String username = randomString();
     private String password = randomString();
-    private String fName = randomString();
-    private String lName = randomString();
-    private String email = randomString() + "@email.org";
+    private String fname = randomString();
+    private String lname = randomString();
+    private String email = randomEmail();
     private UserType type = randomEnum(UserType.class);
     private Boolean active = randomBoolean();
 
@@ -29,8 +30,8 @@ public class UserBuilder implements Builder<User> {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setFname(fName);
-        user.setLname(lName);
+        user.setFname(fname);
+        user.setLname(lname);
         user.setEmail(email);
         user.setActive(active);
         user.setType(type);
@@ -57,13 +58,13 @@ public class UserBuilder implements Builder<User> {
         return this;
     }
 
-    public UserBuilder withFirstName(String fName) {
-        this.fName = fName;
+    public UserBuilder withFirstName(String fname) {
+        this.fname = fname;
         return this;
     }
 
-    public UserBuilder withLastName(String lName) {
-        this.lName = lName;
+    public UserBuilder withLastName(String lname) {
+        this.lname = lname;
         return this;
     }
 

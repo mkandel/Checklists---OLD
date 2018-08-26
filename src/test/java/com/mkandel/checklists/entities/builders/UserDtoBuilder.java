@@ -18,8 +18,8 @@ public class UserDtoBuilder implements Builder<UserDto> {
     private String id = randomUUIDString();
     private String username = randomString();
     private String password = randomString();
-    private String fName = randomString();
-    private String lName = randomString();
+    private String fname = randomString();
+    private String lname = randomString();
     private String email = randomString() + "@email.org";
     private UserType type = randomEnum(UserType.class);
     private Boolean active = randomBoolean();
@@ -29,8 +29,8 @@ public class UserDtoBuilder implements Builder<UserDto> {
         UserDto userDto = new UserDto();
         userDto.setUsername(username);
         userDto.setPassword(password);
-        userDto.setFname(fName);
-        userDto.setLname(lName);
+        userDto.setFname(fname);
+        userDto.setLname(lname);
         userDto.setEmail(email);
         userDto.setActive(active);
         userDto.setType(type);
@@ -57,13 +57,13 @@ public class UserDtoBuilder implements Builder<UserDto> {
         return this;
     }
 
-    public UserDtoBuilder withFirstName(String fName) {
-        this.fName = fName;
+    public UserDtoBuilder withFirstName(String fname) {
+        this.fname = fname;
         return this;
     }
 
-    public UserDtoBuilder withLastName(String lName) {
-        this.lName = lName;
+    public UserDtoBuilder withLastName(String lname) {
+        this.lname = lname;
         return this;
     }
 

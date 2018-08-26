@@ -24,7 +24,7 @@ public class APIv1Controller {
 
     @RequestMapping(Routes.HEALTH)
     public HashMap<String, String> health() {
-        final HashMap ret = new HashMap<String, String>();
+        final HashMap<String, String> ret = new HashMap<>();
         ret.put("status", "ok");
         return ret;
     }

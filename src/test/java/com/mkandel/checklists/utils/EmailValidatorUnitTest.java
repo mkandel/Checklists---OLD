@@ -14,7 +14,7 @@ public class EmailValidatorUnitTest extends BaseUnitTest {
     Boolean debug = true;
     EmailValidator emailValidator = new EmailValidator();
 
-    private void printEmail(String email){
+    private void printEmail(String email) {
         if (debug) {
             System.out.println("*** Email: '" + email + "' ***");
         }

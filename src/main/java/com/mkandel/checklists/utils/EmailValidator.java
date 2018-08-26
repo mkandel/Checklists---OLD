@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Java email validation program
+ * Java email validation routine
  * Swiped from https://www.journaldev.com/638/java-email-validation-regex
  *
  * @author pankaj
@@ -19,14 +19,9 @@ public class EmailValidator {
     private static final String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
 
     // static Pattern object, since pattern is fixed
-    private final static Pattern pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
+    private static final Pattern pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
 
-    public EmailValidator() {
-        // initialize the Pattern object
-        //pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
-    }
-
-    public boolean validateEmail(String email) {
+    public static boolean validateEmail(String email) {
         // non-static Matcher object because it's created from the input String
         final Matcher matcher = pattern.matcher(email);
         return matcher.matches();

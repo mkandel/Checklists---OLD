@@ -9,7 +9,6 @@ import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.entities.builders.UserBuilder;
 import com.mkandel.checklists.entities.builders.UserDtoBuilder;
 import com.mkandel.checklists.inbound.controllers.UserController;
-import com.mkandel.checklists.inbound.converters.UserConverter;
 import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
 import java.util.ArrayList;
@@ -30,8 +29,6 @@ public class UserControllerUnitTest extends BaseUnitTest {
 
     @InjectMocks
     private UserController userController = new UserController();
-
-    UserConverter userConverter = new UserConverter();
 
     @Test
     public void testUsersEndpoint() {
