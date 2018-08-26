@@ -10,15 +10,18 @@ import com.mkandel.checklists.inbound.converters.UserConverter;
 import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
 import com.mkandel.checklists.utils.Routes;
-import com.mkandel.checklists.utils.UserType;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.mkandel.checklists.inbound.converters.UserConverter.toUser;
 import static com.mkandel.checklists.inbound.converters.UserConverter.toUserDto;
 import static java.util.stream.Collectors.toList;
 
@@ -53,29 +56,9 @@ public class UserController {
         }
     }
 
-    @PutMapping(value = Routes.ADD_USER, consumes = UserDto.JSON_MIME_TYPE, produces = UserDto.JSON_MIME_TYPE)
-    public UserDto addUser(@PathVariable String Fname,
-                        @PathVariable String Lname,
-                        @PathVariable String username,
-                        @PathVariable String email,
-                        @PathVariable String type
-    ) {
-        User user = new User();
-        user.setFname(Fname);
-        user.setLname(Lname);
-        user.setUsername(username);
-        user.setEmail(email);
-        int intType = Integer.parseInt(type);
-        UserType actualType;
-        if(intType == 0){
-            actualType = UserType.ADMIN;
-        } else if (intType == 1){
-            actualType = UserType.CREATOR;
-        } else {
-            actualType = UserType.USER;
-        }
-        user.setType(actualType);
-        user.setActive(true);
-        return toUserDto(userRepository.save(user));
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value = Routes.USERS, consumes = UserDto.JSON_MIME_TYPE, produces = UserDto.JSON_MIME_TYPE)
+    public UserDto addUser(@RequestBody UserDto dto) {
+        return toUserDto(userRepository.save(toUser(dto)));
     }
 }

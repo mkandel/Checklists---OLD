@@ -14,7 +14,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
 apply plugin: 'org.springframework.boot'
@@ -39,13 +38,14 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
     compile 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
     compile 'org.springframework.boot:spring-boot-configuration-processor'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
     compile group: 'org.apache.commons', name: 'commons-text', version: '1.4'
     compile group: 'org.flywaydb', name: 'flyway-core', version: '5.1.4'
     compile group: 'org.hibernate', name: 'hibernate-hikaricp', version: '5.3.4.Final'
     compile group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'//, version: '2.0.4.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 
     runtime 'org.springframework.boot:spring-boot-devtools'
 

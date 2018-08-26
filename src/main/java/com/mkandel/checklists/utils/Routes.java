@@ -13,10 +13,12 @@ public class Routes {
 
     public static final String USERS = BASE + "/users";
     public static final String USERNAMES = BASE + "/usernames";
-    public static final String USER = BASE + "/user/{username}";
+    public static final String USER = USERS + "/{username}";
     public static final String USER_TYPES = USERS + "/types";
 
-    public static final String ADD_USER = BASE + "/user/{username}/{Fname}/{Lname}/{email}/{type}";
+//    public static final String ADD_USER = BASE + "/user";
+//    public static final String ADD_USER = BASE + "/user/add";
+//    public static final String ADD_USER = BASE + "/user/{username}/{Fname}/{Lname}/{email}/{type}";
 
     // Dummy route to play around with
     public static final String TEAPOT = BASE + "/teapot";
