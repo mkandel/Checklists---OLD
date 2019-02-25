@@ -1,14 +1,14 @@
 DROP TRIGGER IF EXISTS `checklists`.`Users_BEFORE_INSERT`;
-DELIMITER |
-CREATE
-TRIGGER `checklists`.`Users_BEFORE_INSERT`
-BEFORE INSERT ON `checklists`.`Users`
-FOR EACH ROW
-BEGIN
-  IF new.id IS NULL THEN
-    SET new.id = UUID();
-  END IF;
-END;
-|
-
-DELIMITER ;
+--DELIMITER |
+--CREATE
+--TRIGGER `checklists`.`Users_BEFORE_INSERT`
+--BEFORE INSERT ON `checklists`.`Users`
+--FOR EACH ROW
+--BEGIN
+--  IF new.id IS NULL THEN
+--    SET new.id = UUID();
+--  END IF;
+--END;
+--|
+--
+--DELIMITER ;

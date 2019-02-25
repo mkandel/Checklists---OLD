@@ -27,8 +27,12 @@ import static java.util.stream.Collectors.toList;
 @RestController
 public class UserController {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping(value = Routes.USERNAMES)
     public List<String> usernames() {

@@ -8,6 +8,7 @@ import com.mkandel.checklists.BaseIntegrationTest;
 import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.entities.builders.UserBuilder;
 import java.util.Optional;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +21,7 @@ public class UserRepositoryIntegrationTest extends BaseIntegrationTest {
 
     private User user = new UserBuilder().build();
 
+    @Ignore
     @Test
     public void save_user_userSaves() {
         user = userRepository.save(new UserBuilder().build());
@@ -27,6 +29,7 @@ public class UserRepositoryIntegrationTest extends BaseIntegrationTest {
         userRepository.deleteById(user.getId());
     }
 
+    @Ignore
     @Test
     public void deleteById_user_userDeletes() {
         user = userRepository.save(new UserBuilder().build());

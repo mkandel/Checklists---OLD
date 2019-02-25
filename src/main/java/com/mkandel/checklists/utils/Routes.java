@@ -7,7 +7,7 @@ package com.mkandel.checklists.utils;
 public class Routes {
     public static final String BASE = "";
     //public static final String BASE = "/api";
-    public static final String BASEV1 = BASE + "/v1";
+    //public static final String BASEV1 = BASE + "/v1";
     public static final String HEALTH = BASE + "/health";
     public static final String VALIDADTE_EMAIL = BASE + "/validateEmail/{email}";
 

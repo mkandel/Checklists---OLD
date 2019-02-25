@@ -12,8 +12,6 @@ management:
     web:
       exposure:
         include: "*"
-#  security:
-#    enabled: false
 #logging:
 #  level:
 #    org:
@@ -22,13 +20,6 @@ management:
 #        type: trace
 server:
   port: 8080
-
-security:
-  basic:
-    enabled: true
-  user:
-    name: "admin"
-    password: "admin"
 
 spring:
   autoconfigure:
@@ -51,7 +42,7 @@ spring:
     serialization:
       indent_output: true
   flyway:
-    enabled: true
+    enabled: false
     core:
       internal:
         command:
@@ -62,5 +53,5 @@ spring:
     repeatableSqlMigrationPrefix: R
     ignore-future-migrations: false
     ignore-missing-migrations: false
+    baseline-on-migrate: true
     table: FlywayMigrationHistory
-    baselineOnMigrate: true
