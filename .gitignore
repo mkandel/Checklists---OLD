@@ -6,3 +6,4 @@ out
 target
 .DS_Store
 create_users_table_mssql.sql
+.idea/

@@ -11,12 +11,12 @@ import static mkandel.utils.ErrorMessageConstants.*;
 
 public class User {
     private UUID id;
-    private String Fname;
-    private String Lname;
+    private String fName;
+    private String lName;
     private String username;
     private String email;
     private UserType type;
-    private Boolean active;
+    private boolean active;
 
     public User() {
     }
@@ -33,20 +33,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFname() {
-        return Fname;
+    public String getfName() {
+        return fName;
     }
 
-    public void setFname(String Fname) {
-        this.Fname = Fname;
+    public void setfName(String Fname) {
+        this.fName = Fname;
     }
 
-    public String getLname() {
-        return Lname;
+    public String getlName() {
+        return lName;
     }
 
-    public void setLname(String Lname) {
-        this.Lname = Lname;
+    public void setlName(String Lname) {
+        this.lName = Lname;
     }
 
     public String getUsername() {
@@ -77,7 +77,7 @@ public class User {
         this.type = type;
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
@@ -88,7 +88,7 @@ public class User {
     public void save() throws Exception {
         // save User to DB
 //        dbAdapter.saveUser(this);
-        // read back user from DB and replace all values with the ones read back
+        // read back userByUsername from DB and replace all values with the ones read back
         //      especially, set this.id for new User
     }
 }

@@ -13,8 +13,8 @@ public class UserBuilder implements Builder {
 
     private UUID id;
     private String username;
-    private String Fname;
-    private String Lname;
+    private String fName;
+    private String lName;
     private String email;
     private UserType type;
     private Boolean active;

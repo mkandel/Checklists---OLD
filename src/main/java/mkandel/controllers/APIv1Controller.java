@@ -38,7 +38,7 @@ public class APIv1Controller {
         return HttpStatus.I_AM_A_TEAPOT;
     }
 
-    @GetMapping(VALIDADTE_EMAIL)
+    @GetMapping(VALIDATE_EMAIL)
     public Map<String, String> validateEmail(@PathVariable String email){
         EmailValidator emailValidator = new EmailValidator();
         Map<String, String> ret = new HashMap<>();

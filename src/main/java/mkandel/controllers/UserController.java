@@ -38,8 +38,14 @@ public class UserController {
     }
 
     @GetMapping(USER)
-    public User user(@PathVariable String username) throws Exception {
-        User user = dbAdapter.getUser(username);
+    public User userById(@PathVariable String id) throws Exception {
+        User user = dbAdapter.getUser(id);
+        return user;
+    }
+
+    @GetMapping(USER_BY_USERNAME)
+    public User userByUsername(@PathVariable String username) throws Exception {
+        User user = dbAdapter.getUserByUsername(username);
         return user;
     }
 
@@ -51,8 +57,8 @@ public class UserController {
                         @PathVariable String type
     ) throws InvalidEmailException {
         User user = new User();
-        user.setFname(Fname);
-        user.setLname(Lname);
+        user.setfName(Fname);
+        user.setlName(Lname);
         user.setUsername(username);
         user.setEmail(email);
         int intType = Integer.parseInt(type);
@@ -66,7 +72,7 @@ public class UserController {
         }
         user.setType(actualType);
         user.setActive(true);
-        // TODO: save() user which should update id with DB assigned id
+        // TODO: save() userByUsername which should update id with DB assigned id
         user.setId(java.util.UUID.randomUUID());
         return user;
     }

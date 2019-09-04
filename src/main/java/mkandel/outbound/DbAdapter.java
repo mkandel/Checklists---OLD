@@ -28,7 +28,7 @@ public class DbAdapter {
 
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/checklists"
-                    + "?user=" + dbUsername + "&password=" + dbPassword
+                    + "?userByUsername=" + dbUsername + "&password=" + dbPassword
                     + "&autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false"
                     + "&useUnicode=true&useJDBCCompliantTimezoneShift=true"
                     + "&serverTimezone=America/New_York"
@@ -84,7 +84,7 @@ public class DbAdapter {
         return returnVal;
     }
 
-    public User getUser(String username) throws Exception {
+    public User getUserByUsername(String username) throws Exception {
 
         User user = new User();
 
@@ -96,6 +96,34 @@ public class DbAdapter {
             //statement.setString(1, username);
             statement = connection.createStatement();
             String sql = "SELECT * FROM Users WHERE username LIKE '" + username + "'";
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while(rs.next()){
+                processReadUser(user, rs);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw ex;
+        }
+
+        return user;
+    }
+
+    public User getUser(String id) throws Exception {
+
+        User user = new User();
+
+        try {
+            // Why doesn't this work??
+            //
+            //String sql = "SELECT * FROM Users WHERE username LIKE ?";
+            //PreparedStatement statement = connection.prepareStatement(sql);
+            //statement.setString(1, username);
+            statement = connection.createStatement();
+            String sql = "SELECT * FROM Users WHERE id = " + id + ";";
 
             ResultSet rs = statement.executeQuery(sql);
 
@@ -137,8 +165,8 @@ public class DbAdapter {
 
     private void processReadUser(User user, ResultSet rs) throws SQLException, InvalidEmailException {
         //Retrieve by column name
-        user.setFname(rs.getString("FName"));
-        user.setLname(rs.getString("Lname"));
+        user.setfName(rs.getString("FName"));
+        user.setlName(rs.getString("Lname"));
         user.setUsername(rs.getString("username"));
         user.setActive(rs.getBoolean("active"));
         user.setEmail(rs.getString("email"));

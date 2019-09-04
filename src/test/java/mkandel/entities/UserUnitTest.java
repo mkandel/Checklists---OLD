@@ -30,16 +30,16 @@ public class UserUnitTest extends BaseUnitTest {
     public void getAndSetAndSetFname() {
         String Fname = generateRandomString();
         System.out.println("Fname: " + Fname);
-        user.setFname(Fname);
-        assertThat(Fname, equalTo(user.getFname()));
+        user.setfName(Fname);
+        assertThat(Fname, equalTo(user.getfName()));
     }
 
     @Test
     public void getAndSetLname() {
         String Lname = generateRandomString();
         System.out.println("Lname: " + Lname);
-        user.setLname(Lname);
-        assertThat(Lname, equalTo(user.getLname()));
+        user.setlName(Lname);
+        assertThat(Lname, equalTo(user.getlName()));
     }
 
     @Test
