@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
-package mkandel.utils;
+package com.mkandel.checklists.utils;
 
-import java.util.*;
-import mkandel.entities.*;
+import com.mkandel.checklists.entities.User;
+
+import java.util.UUID;
 
 import static mkandel.utils.RandomGenerator.*;
 

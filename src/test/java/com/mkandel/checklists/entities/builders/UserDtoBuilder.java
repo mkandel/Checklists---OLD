@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists.entities.builders;
@@ -8,10 +8,7 @@ import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.utils.Builder;
 import com.mkandel.checklists.utils.UserType;
 
-import static com.mkandel.checklists.utils.RandomGenerator.randomBoolean;
-import static com.mkandel.checklists.utils.RandomGenerator.randomEnum;
-import static com.mkandel.checklists.utils.RandomGenerator.randomString;
-import static com.mkandel.checklists.utils.RandomGenerator.randomUUIDString;
+import static com.mkandel.checklists.utils.RandomGenerator.*;
 
 public class UserDtoBuilder implements Builder<UserDto> {
 

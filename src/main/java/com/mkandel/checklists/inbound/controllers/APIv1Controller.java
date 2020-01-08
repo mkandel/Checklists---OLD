@@ -1,18 +1,19 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists.inbound.controllers;
 
 import com.mkandel.checklists.utils.EmailValidator;
 import com.mkandel.checklists.utils.Routes;
-import java.util.HashMap;
-import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class APIv1Controller {
@@ -34,7 +35,7 @@ public class APIv1Controller {
         return HttpStatus.I_AM_A_TEAPOT;
     }
 
-    @GetMapping(Routes.VALIDADTE_EMAIL)
+    @GetMapping(Routes.VALIDATE_EMAIL)
     public Map<String, String> validateEmail(@PathVariable String email) {
         final EmailValidator emailValidator = new EmailValidator();
         final Map<String, String> ret = new HashMap<>();

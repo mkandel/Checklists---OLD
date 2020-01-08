@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists.inbound.controllers;
@@ -9,16 +9,12 @@ import com.mkandel.checklists.exceptions.UserNotFoundException;
 import com.mkandel.checklists.inbound.dtos.UserDto;
 import com.mkandel.checklists.outbound.repositories.UserRepository;
 import com.mkandel.checklists.utils.Routes;
-import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 import static com.mkandel.checklists.inbound.converters.UserConverter.toUser;
 import static com.mkandel.checklists.inbound.converters.UserConverter.toUserDto;

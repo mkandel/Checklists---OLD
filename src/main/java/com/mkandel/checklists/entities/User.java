@@ -1,16 +1,13 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists.entities;
 
 import com.mkandel.checklists.utils.UserType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Users")
@@ -103,4 +100,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void save(){};
 }

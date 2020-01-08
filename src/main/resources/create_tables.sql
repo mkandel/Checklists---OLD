@@ -1,5 +1,8 @@
+/*
+ * Copyright (c) 2020. Marc Kandel
+ */
+
 --
--- Copyright (c) 2018. Marc Kandel
 --
 USE `checklists`;
 CREATE TABLE IF NOT EXISTS `checklists`.`users` (
