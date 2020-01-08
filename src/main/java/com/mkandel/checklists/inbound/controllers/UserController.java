@@ -43,13 +43,23 @@ public class UserController {
         return toUserDto(userRepository.findAll());
     }
 
-    @GetMapping(value = Routes.USER, produces = UserDto.JSON_MIME_TYPE)
+    @GetMapping(value = Routes.USER_BY_USERNAME, produces = UserDto.JSON_MIME_TYPE)
     public UserDto user(@PathVariable String username) throws UserNotFoundException {
         final Optional<User> optionalUser = userRepository.findByUsername(username);
         if (optionalUser.isPresent()) {
             return toUserDto(optionalUser.get());
         } else {
             throw new UserNotFoundException("No such user : '" + username + "'");
+        }
+    }
+
+    @GetMapping(value = Routes.USER, produces = UserDto.JSON_MIME_TYPE)
+    public UserDto userById(@PathVariable String id) throws UserNotFoundException {
+        final Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            return toUserDto(optionalUser.get());
+        } else {
+            throw new UserNotFoundException("No such userID : '" + id + "'");
         }
     }
 

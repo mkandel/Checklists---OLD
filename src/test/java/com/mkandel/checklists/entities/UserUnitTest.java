@@ -1,14 +1,15 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists.entities;
 
 import com.mkandel.checklists.BaseUnitTest;
 import com.mkandel.checklists.entities.builders.UserBuilder;
+import org.junit.Test;
+
 import java.util.List;
 import java.util.stream.Stream;
-import org.junit.Test;
 
 import static com.mkandel.checklists.utils.RandomGenerator.randomInteger;
 import static java.util.stream.Collectors.toList;
@@ -30,4 +31,5 @@ public class UserUnitTest extends BaseUnitTest {
         assertThat(users).isNotNull();
         assertThat(users).hasSize(size);
     }
+
 }

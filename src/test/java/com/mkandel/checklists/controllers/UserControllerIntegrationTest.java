@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists.controllers;
@@ -9,7 +9,6 @@ import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.entities.builders.UserBuilder;
 import com.mkandel.checklists.inbound.controllers.UserController;
 import com.mkandel.checklists.inbound.dtos.UserDto;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +19,7 @@ public class UserControllerIntegrationTest extends BaseIntegrationTest {
     @Autowired
     UserController userController;
 
-    @Ignore
+//    @Ignore
     @Test
     public void user_validUser_returnsCorrectUser() throws Exception {
         UserDto expected = toUserDto(userRepository.save(new UserBuilder().build()));
@@ -28,7 +27,7 @@ public class UserControllerIntegrationTest extends BaseIntegrationTest {
         userRepository.deleteById(expected.getId());
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void userEndpoint_validUser_returnsCorrectUser() throws Exception {
         User user = userRepository.save(new UserBuilder().build());

@@ -21,7 +21,6 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'mkandel'
 version = '0.0.1-SNAPSHOT'
-//sourceCompatibility = 1.12
 
 repositories {
     mavenCentral()
@@ -34,13 +33,6 @@ checkstyle {
 }
 
 dependencies {
-//    compile 'com.google.api-client:google-api-client:1.25.0'
-//    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    compile 'org.springframework.boot:spring-boot-starter-data-rest'
-//    compile 'org.springframework.boot:spring-boot-starter-security'
-//    compile 'org.springframework.boot:spring-boot-starter-web'
-//    compile 'org.springframework.boot:spring-boot-starter-webflux'
-//    compile 'org.springframework.boot:spring-boot-configuration-processor'
     compile group: 'org.springframework', name: 'spring-core', version: '5.2.2.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.2.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.2.RELEASE'
@@ -59,15 +51,13 @@ dependencies {
 
     implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
-//    implementation 'org.springframework.boot:spring-boot-configuration-processor'
-//    compileOnly( "org.springframework.boot:spring-boot-configuration-processor")
+
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
     runtime 'org.springframework.boot:spring-boot-devtools'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile group: 'org.springframework', name: 'spring-test', version: '5.2.2.RELEASE'
-//    testCompile 'org.springframework.security:spring-security-test'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.2.0'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '3.2.4'
 }
