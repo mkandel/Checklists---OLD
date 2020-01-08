@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. Marc Kandel
+ */
+
 DELIMITER |
 CREATE
 DEFINER=`root`@`localhost`
