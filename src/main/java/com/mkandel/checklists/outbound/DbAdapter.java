@@ -6,7 +6,6 @@ package com.mkandel.checklists.outbound;
 
 import com.mkandel.checklists.entities.User;
 import com.mkandel.checklists.utils.InvalidEmailException;
-import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 import static com.mkandel.checklists.utils.UserType.*;
 
-@Component
+//@Component
 public class DbAdapter {
     private String dbUsername = "sa";
     private String dbPassword = "sa";

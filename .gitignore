@@ -5,6 +5,5 @@ nb-gradle
 out
 target
 .DS_Store
-<<<<<<< HEAD
 create_users_table_mssql.sql
 .idea/

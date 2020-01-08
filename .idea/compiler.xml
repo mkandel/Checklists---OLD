@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.0.4.RELEASE/dcaf863e151e728debbf37cf024e7b698ea92281/spring-boot-configuration-processor-2.0.4.RELEASE.jar" />
+        </processorPath>
+        <module name="Checklists.main" />
+      </profile>
+    </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Checklists_main" target="1.8" />
-      <module name="Checklists_test" target="1.8" />
+      <module name="Checklists.main" target="12" />
+      <module name="Checklists.test" target="12" />
     </bytecodeTargetLevel>
   </component>
 </project>

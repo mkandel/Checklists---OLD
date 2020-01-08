@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Checklists.iml" filepath="$PROJECT_DIR$/.idea/Checklists.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists_main.iml" group="Checklists" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists_test.iml" group="Checklists" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Checklists.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Checklists.test.iml" />
     </modules>
   </component>
 </project>

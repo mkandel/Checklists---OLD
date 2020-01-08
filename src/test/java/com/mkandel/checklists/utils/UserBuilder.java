@@ -8,11 +8,11 @@ import com.mkandel.checklists.entities.User;
 
 import java.util.UUID;
 
-import static mkandel.utils.RandomGenerator.*;
+//import static mkandel.utils.RandomGenerator.*;
 
 public class UserBuilder implements Builder {
 
-    private UUID id;
+    private String id;
     private String username;
     private String fName;
     private String lName;
@@ -29,13 +29,13 @@ public class UserBuilder implements Builder {
         return user;
     }
 
-    public UserBuilder withId(UUID id){
+    public UserBuilder withId(String id){
         this.id = id;
         return this;
     }
 
     public UserBuilder withiRandomId(){
-        this.id = generateRandomUUID();
+        this.id = UUID.randomUUID().toString();
         return this;
     }
 

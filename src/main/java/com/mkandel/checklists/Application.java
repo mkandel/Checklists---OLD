@@ -1,10 +1,9 @@
 /*
- * Copyright (c) 2018. Marc Kandel
+ * Copyright (c) 2020. Marc Kandel
  */
 
 package com.mkandel.checklists;
 
-import javax.sql.DataSource;
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -12,9 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import javax.sql.DataSource;
+
 @SpringBootApplication
 @EntityScan("com.mkandel.checklists.entities")
-@ConfigurationProperties
+@ConfigurationProperties(prefix = "checklists")
 public class Application {
 
     public static void main(String[] args) {
